@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>leetcode 136. Single Number</title>
+    <url>/tantian123.github.io/2020/04/02/leetcode-136-Single-Number/</url>
+    <content><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h3><p>这是一道Bit Operation位操作的题目<br>异或XOR操作：相同为0，不同为1<br>相同元素出现两次即出现两次变号  0-&gt;1-&gt;0(或1-&gt;0-&gt;1)<br>只出现一次的元素只变号一次     0-&gt;1(或1-&gt;0)</p>
+<p>文字描述不够直观<br><strong>接下来直接举例，[1,2,3,4,1,2,3]  输出4</strong><br>res=1 ^ 2 ^ 3 ^ 4 ^ 1^ 2 ^ 3=(1 ^ 1) ^ (2 ^ 2)^(3 ^ 3)^ 4=0^ 0^ 0^4</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[1] -&gt; 0-0-0-1   //与下面的进行异或操作</span><br><span class="line">[2] -&gt; 0-0-1-0   //(0-0-0-1)+(0-0-1-0)=(0-0-1-1) </span><br><span class="line">[3] -&gt; 0-0-1-1   //(0-0-1-1)+(0-0-1-1)=(0-0-0-0)</span><br><span class="line">[4] -&gt; 0-1-0-0   //(0-0-0-0)+(0-1-0-0)=(0-1-0-0)</span><br><span class="line">[1] -&gt; 0-0-0-1   //(0-1-0-0)+(0-0-0-1)=(0-1-0-1)</span><br><span class="line">[2] -&gt; 0-0-1-0   //(0-1-0-1)+(0-0-1-0)=(0-1-1-1)</span><br><span class="line">[3] -&gt; 0-0-1-1   //(0-1-1-1)+(0-0-1-1)=(0-1-0-0)</span><br><span class="line">//最后输出结果为0-1-0-0，即为十进制数4.</span><br></pre></td></tr></table></figure>
+
+<h3 id="java代码"><a href="#java代码" class="headerlink" title="java代码"></a>java代码</h3><p>java进行按位异或操作  c = a ^ b</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int singleNumber(int[] nums) &#123;</span><br><span class="line">        int n=nums.length;</span><br><span class="line">        for(int i=1;i&lt;n;i++)</span><br><span class="line">            nums[i]=nums[i-1]^nums[i];</span><br><span class="line">        return nums[n-1];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo命令</title>
     <url>/tantian123.github.io/2020/04/02/hexo%E5%91%BD%E4%BB%A4/</url>
     <content><![CDATA[<h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br><span class="line">简写为</span><br><span class="line">hexo n &quot;我的博客&quot;</span><br></pre></td></tr></table></figure>
