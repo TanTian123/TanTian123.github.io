@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>tcp面试题</title>
+    <url>/tantian123.github.io/2020/05/20/tcp%E9%9D%A2%E8%AF%95%E9%A2%98/</url>
+    <content><![CDATA[<h1 id="tcp总结"><a href="#tcp总结" class="headerlink" title="tcp总结"></a>tcp总结</h1><ul>
+<li><p>tcp/udp首部报文</p>
+</li>
+<li><p>三次握手 四次挥手 状态变换</p>
+</li>
+<li><p>tcp的流量控制</p>
+</li>
+<li><p>tcp的拥塞控制</p>
+</li>
+<li><p>常见的面试题</p>
+</li>
+</ul>
+<h3 id="1-tcp-udp报文"><a href="#1-tcp-udp报文" class="headerlink" title="1.tcp/udp报文"></a>1.tcp/udp报文</h3><p>tcp报文=tcp首部字段+数据字段<br>源端口，目的端口，序号seq，确认号ack</p>
+<p><img src="/images/1.jpg" alt="tcp"></p>
+<h4 id="tcp-udp的区别"><a href="#tcp-udp的区别" class="headerlink" title="tcp/udp的区别"></a>tcp/udp的区别</h4><ul>
+<li>tcp 面向连接 可靠 面向字节流<br>udp 无连接 不可靠 面向报文</li>
+<li>TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多</li>
+<li>UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低。TCP通过慢开始、拥塞避免、快重传、快恢复等算法进行拥塞控制。</li>
+<li>UDP首开销小，只有8个字节。TCP首部是20个字节</li>
+</ul>
+<h3 id="2-三次握手-四次挥手"><a href="#2-三次握手-四次挥手" class="headerlink" title="2.三次握手 四次挥手"></a>2.三次握手 四次挥手</h3><p><strong>主要关注控制位，序号，确认号，状态</strong></p>
+<h3 id="5-常见的面试题"><a href="#5-常见的面试题" class="headerlink" title="5.常见的面试题"></a>5.常见的面试题</h3><p>为什么不是二次握手<br>为什么要等待2MSL<br>为什么是四次挥手<br>syn泛洪攻击<br>三次握手过程中可以携带数据吗</p>
+]]></content>
+  </entry>
+  <entry>
     <title>leetcode 136. Single Number</title>
     <url>/tantian123.github.io/2020/04/02/leetcode-136-Single-Number/</url>
     <content><![CDATA[<h3 id="思路"><a href="#思路" class="headerlink" title="思路:"></a>思路:</h3><p>这是一道Bit Operation位操作的题目<br>异或XOR操作：相同为0，不同为1<br>相同元素出现两次即出现两次变号  0-&gt;1-&gt;0(或1-&gt;0-&gt;1)<br>只出现一次的元素只变号一次     0-&gt;1(或1-&gt;0)</p>
