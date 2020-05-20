@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  266
+                  1.7k
                 </span>
               
 
@@ -356,7 +356,7 @@
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
                 <span title="阅读时长">
-                  1
+                  6
                 </span>
               
             </div>
@@ -391,16 +391,50 @@
 <li><p>常见的面试题</p>
 </li>
 </ul>
-<h3 id="1-tcp-udp报文"><a href="#1-tcp-udp报文" class="headerlink" title="1.tcp/udp报文"></a>1.tcp/udp报文</h3><p>tcp报文=tcp首部字段+数据字段<br>源端口，目的端口，序号seq，确认号ack</p>
+<p>tcp连接的每一端口，都由一个接收缓存、一个发送缓存和几个变量（lastByteRead RcvWindow Conwin）<br>RTT 往返时延</p>
+<h2 id="1-tcp-udp报文"><a href="#1-tcp-udp报文" class="headerlink" title="1.tcp/udp报文"></a>1.tcp/udp报文</h2><p>tcp报文=tcp首部字段+数据字段<br>源端口，目的端口，序号seq，确认号ack，控制位（ACK SYN FIN）,窗口</p>
 <p><img src="/images/1.jpg" alt="tcp"></p>
-<h4 id="tcp-udp的区别"><a href="#tcp-udp的区别" class="headerlink" title="tcp/udp的区别"></a>tcp/udp的区别</h4><ul>
+<p>控制位 是6bit</p>
+<p>udp报文=源端口号+目的端口号+长度（总长度）+校验和+数据字段</p>
+<h3 id="tcp-udp的区别"><a href="#tcp-udp的区别" class="headerlink" title="tcp/udp的区别"></a>tcp/udp的区别</h3><ul>
 <li>tcp 面向连接 可靠 面向字节流<br>udp 无连接 不可靠 面向报文</li>
 <li>TCP连接只能是点到点的;UDP支持一对一，一对多，多对一和多对多</li>
 <li>UDP没有拥塞控制，因此网络出现拥塞不会使源主机的发送速率降低。TCP通过慢开始、拥塞避免、快重传、快恢复等算法进行拥塞控制。</li>
 <li>UDP首开销小，只有8个字节。TCP首部是20个字节</li>
 </ul>
-<h3 id="2-三次握手-四次挥手"><a href="#2-三次握手-四次挥手" class="headerlink" title="2.三次握手 四次挥手"></a>2.三次握手 四次挥手</h3><p><strong>主要关注控制位，序号，确认号，状态</strong></p>
-<h3 id="5-常见的面试题"><a href="#5-常见的面试题" class="headerlink" title="5.常见的面试题"></a>5.常见的面试题</h3><p>为什么不是二次握手<br>为什么要等待2MSL<br>为什么是四次挥手<br>syn泛洪攻击<br>三次握手过程中可以携带数据吗</p>
+<h2 id="2-三次握手-四次挥手"><a href="#2-三次握手-四次挥手" class="headerlink" title="2.三次握手 四次挥手"></a>2.三次握手 四次挥手</h2><p><strong>主要关注控制位，序号，确认号，状态</strong><br><img src="/images/2.jpg" alt="tcp"></p>
+<p>序列号/确认号的作用<br>序列号：<br>每个字节都按顺序编号，而报头中的序号字段值则指的是本报文段数据的第一个字节的序号<br>确认号：<br>告诉对方我已经收到xx，下次期望收到对方下个报文段的第一个数据字节的序号（下次的第一个字节）</p>
+<p>序列号保证了传输的数据包的顺序</p>
+<p>用tcp发送了一个数据包后，会把它放到重发队列里，同时计时，<br>如果收到了这个包的确认信息，就会将这个包从重发队列中删除，<br>如果在计时器超时内，没收到确认信息，就会进行重发</p>
+<p>初始序列号(ISN) 是随机值  有client_isn和server_isn</p>
+<h3 id="2-1-三次握手"><a href="#2-1-三次握手" class="headerlink" title="2.1.三次握手"></a>2.1.三次握手</h3><ol>
+<li><p>SYN=1 seq=x （也就是client_isn）<br>客户端发送SYN包到服务器<br>此后，客户端状态SYN_SENT</p>
+</li>
+<li><p>ACK=1 SYN=1 seq=y（也就是server_isn） ack=x+1<br>服务器收到SYN包，服务器返回SYNACK包，<br>此后，服务器状态SYN_RECV</p>
+</li>
+<li><p>ACK=1 seq=x+1  ack=y+1  SYN=0<br>客户端收到SYNACK包，发送ACK包给服务器<br>服务器收到<br>此后，客户端/服务器状态 ESTABLISHED（TCP连接成功）</p>
+</li>
+</ol>
+<p>通过三次握手，通信双方了解了如下信息<br>1、对方报文发送的开始序号。<br>2、对方发送数据的缓冲区大小。<br>3、能被接收的最大报文段长度MSS。<br>4、被支持的TCP选项。</p>
+<p>另一种理解，通过三次握手，通信双方都明确自己和对方的收、发能力是正常的<br>第一次握手（服务器端知道自己的收能力，和客户端的发能力）<br>第二次握手（客户端知道自己的收发能力和服务器端的收发能力）<br>第三次握手（服务器知道自己的发能力和客户端的收能力）</p>
+<h3 id="2-2-四次挥手"><a href="#2-2-四次挥手" class="headerlink" title="2.2.四次挥手"></a>2.2.四次挥手</h3><ol>
+<li><p>FIN=1 ACK=1 seq=x ack=z<br>客户端发出连接释放报文<br>此后，客户端状态FIN_WAIT_1</p>
+</li>
+<li><p>ACK=1 seq=z ack=x+1<br>服务器收到后，发出确认报文（此时服务器还没发完，不能关闭）<br>此后，客户端状态  FIN_WAIT_1<br>服务器端状态  CLOSE_WAIT</p>
+</li>
+<li><p>FIN=1 ACK=1 seq=y ack=x+1<br>服务器传完后，就发送连接释放报文<br>此后，服务器状态LAST_ACK </p>
+</li>
+<li><p>ACK=1 seq=x+1 ack=y+1<br>客户端收到连接释放报文，发出确认报文<br>此后，客户端进入TIME_WAIT状态</p>
+</li>
+</ol>
+<p>此时还要等待2MSL（最长报文段寿命）客户端才撤销TCB 进入CLOSED状态<br>服务器端收到客户端的确认报文，立刻进入CLOSED状态，所以服务器结束得早一点</p>
+<h2 id="3-tcp流量控制"><a href="#3-tcp流量控制" class="headerlink" title="3.tcp流量控制"></a>3.tcp流量控制</h2><p>tcp让发送方维护一个接收窗口的变量来实现流量控制   RcvWindow<br>接收窗口用于告诉发送方，你的接收方还有多少缓存可用<br>两边都各自维护一个接收窗口，同时TCP不允许缓存溢出<br>主机B把当前的接收窗口值放入它发给主机A的TCP报文段里的接收窗口字段，通过控制未确认的数据量在接收窗口以内</p>
+<p>当然，这个方案存在一个技术问题，<br>考虑一种特殊情况，当接收方B缓存满了，那么发送方A的接收窗口设为0，而之后如果接收方B缓存清空，发送方A就一直阻塞，不发。<br>解决方案：TCP规约中要求，接收窗口为0时，发送方A会继续发送只有一个字节的报文段，一旦缓存清空了，接收方B就会返回一个非0的窗口值。</p>
+<h2 id="4-tcp拥塞控制"><a href="#4-tcp拥塞控制" class="headerlink" title="4.tcp拥塞控制"></a>4.tcp拥塞控制</h2><p>每一端都记录一个变量——拥塞窗口，CongWin。<br>它对一个TCP发送方，发送的速率进行了限制。<br>即 发送方未确认的数据量   (LastByteSend-LastByteAcked)&lt;=min(CongWin,RcvWindow)</p>
+<p>TCP是如何感知阻塞的呢？</p>
+<p>解决办法：<br>1.慢开始<br>2.拥塞避免<br>3.快重传<br>4.快恢复</p>
+<h2 id="5-常见的面试题"><a href="#5-常见的面试题" class="headerlink" title="5.常见的面试题"></a>5.常见的面试题</h2><p>为什么需要初始序号<br>    为了避免安全攻击。初始序号是随机的<br>为什么不是二次握手<br>    主要为了防止A已失效的连接请求报文段突然又传送到了B，因而产生错误。如果没有第三次握手，B收到消息就会立马建立连接。<br>为什么要等待2MSL/为什么需要TIME_WAIT<br>    MSL是Maximum Segment Lifetime英文的缩写，中文可以译为“报文最大生存时间”<br>    为了保证A发送的最后一个ACK报文能够到达B ，如果A不等待，此时B没收到A的ACK，B就不会关闭<br>为什么是四次挥手（关键在于挥手是需要等的，而握手是随时可以的）<br>    第一次挥手 A不主动发了，仍然可以接收<br>    第二次挥手 B告诉A 我知道你的情况了 但是我还没发完，等会<br>    第三次挥手 B告诉A 我处理完了，我不主动发了<br>    第四次挥手 A告诉B 你可以关闭接收了</p>
+<p>syn洪泛攻击<br>    服务器响应SYN 会分配并初始化变量和缓存，消耗资源<br>    攻击者发送大量的TCP SYN报文段，而不进行第三次握手。导致服务器资源消耗殆尽。<br>    现在的防御手段，SYN cookies<br>三次握手过程中可以携带数据吗<br>    第三次握手允许携带数据<br>linux系统的nmap工具 （端口扫描工具）<br>    没用过</p>
 
           
         
