@@ -71,7 +71,7 @@
 
 
 
-  <meta name="keywords" content="java,基础知识,面向面试编程," />
+  <meta name="keywords" content="面向面试编程,java,基础知识," />
 
 
 
@@ -82,15 +82,15 @@
 
 
 
-<meta name="description" content="中南大学本科计算机在读">
-<meta name="keywords" content="java,基础知识,面向面试编程">
+<meta name="description" content="常见的集合类Map和Collection接口 Collection接口的子接口有，Set接口，List接口,Queue接口Map接口有 HashMap TreeMap LinkedHashMap CorrentHashMap HashTable Set接口有 HashSet TreeSet LinkedHashSet CorrentHashSetList接口有 LinkedList ArrayLi">
+<meta name="keywords" content="面向面试编程,java,基础知识">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java集合">
 <meta property="og:url" content="http:&#x2F;&#x2F;tantian123.github.io&#x2F;2020&#x2F;05&#x2F;21&#x2F;java%E9%9B%86%E5%90%88&#x2F;index.html">
 <meta property="og:site_name" content="tantian&#39;s Blog">
-<meta property="og:description" content="中南大学本科计算机在读">
+<meta property="og:description" content="常见的集合类Map和Collection接口 Collection接口的子接口有，Set接口，List接口,Queue接口Map接口有 HashMap TreeMap LinkedHashMap CorrentHashMap HashTable Set接口有 HashSet TreeSet LinkedHashSet CorrentHashSetList接口有 LinkedList ArrayLi">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-20T18:17:48.535Z">
+<meta property="og:updated_time" content="2020-05-30T15:09:34.644Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  416
                 </span>
               
 
@@ -381,7 +381,23 @@
       
 
       
-        
+        <h1 id="常见的集合类"><a href="#常见的集合类" class="headerlink" title="常见的集合类"></a>常见的集合类</h1><p>Map和Collection接口</p>
+<p>Collection接口的子接口有，Set接口，List接口,Queue接口<br>Map接口有 HashMap TreeMap LinkedHashMap CorrentHashMap HashTable</p>
+<p>Set接口有 HashSet TreeSet LinkedHashSet CorrentHashSet<br>List接口有 LinkedList ArrayList Vector<br>Queue接口有 PriorityQueue LinkedList dequeue</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>Map存的是键值对，键是唯一的<br>List存的是可重复的<br>Set是不可重复的</p>
+<h1 id="List接口"><a href="#List接口" class="headerlink" title="List接口"></a>List接口</h1><p>LinkedList 基于链表<br>ArrayList 基于数组，线程不安全<br>Vector 线程安全</p>
+<p>数组和链表的关键区别：内存连不连续</p>
+<h1 id="Map接口"><a href="#Map接口" class="headerlink" title="Map接口"></a>Map接口</h1><h3 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h3><p>散列表(数组+链表)   当链表长度大于阈值时，转化为红黑树</p>
+<h3 id="Hashtable-线程安全"><a href="#Hashtable-线程安全" class="headerlink" title="Hashtable  线程安全"></a>Hashtable  线程安全</h3><p>底层散列表</p>
+<h3 id="TreeMap"><a href="#TreeMap" class="headerlink" title="TreeMap"></a>TreeMap</h3><p>底层是红黑树</p>
+<h3 id="LinkedHashMap"><a href="#LinkedHashMap" class="headerlink" title="LinkedHashMap"></a>LinkedHashMap</h3><p>底层是散列表和双向链表<br>HashMap中不存在保存顺序，LinkedHashMap专为此特性而生</p>
+<h3 id="ConcurrentHashMap-线程安全"><a href="#ConcurrentHashMap-线程安全" class="headerlink" title="ConcurrentHashMap 线程安全"></a>ConcurrentHashMap 线程安全</h3><p>jdk1.8 散列表+红黑树         synchronized只锁定当前链表或红黑二叉树的首节点（因为是链地址法解决冲突）<br>jdk1.7 segments（继承ReetrantLock）+HashEntry数组</p>
+<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h1><h3 id="HashSet-LinkedHashSet"><a href="#HashSet-LinkedHashSet" class="headerlink" title="HashSet/LinkedHashSet"></a>HashSet/LinkedHashSet</h3><p>基于HashMap/LinkedHashMap</p>
+<p>1.Array和ArrayList的区别<br>Array定长，ArrayList 的大小是动态变化的<br>可以包含基本类型和对象类型，ArrayList 只能包含对象类型</p>
+<p>2.哪些集合可以存放null？<br>上述集合除了Hashtable和ConcurrentHashMap都可以。</p>
+<p>Collection和Collections的区别：<br>Java..util.Collection是一个接口<br>Collections则是集合类的一个工具类，其中提供了一系列静态方法，用于对集合中元素进行排序、搜索及线程安全等操作。</p>
+<p>3.散列表冲突的解决?<br>开放地址法 寻找下一个空的数组下标<br>再散列法(二次哈希法)  再计算一次<br>链地址法(拉链法)   链表存</p>
+
       
     </div>
     
@@ -416,11 +432,11 @@
       
         <div class="post-tags">
           
+            <a href="/tantian123.github.io/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/" rel="tag"># 面向面试编程</a>
+          
             <a href="/tantian123.github.io/tags/java/" rel="tag"># java</a>
           
             <a href="/tantian123.github.io/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" rel="tag"># 基础知识</a>
-          
-            <a href="/tantian123.github.io/tags/%E9%9D%A2%E5%90%91%E9%9D%A2%E8%AF%95%E7%BC%96%E7%A8%8B/" rel="tag"># 面向面试编程</a>
           
         </div>
       
@@ -509,8 +525,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,7 +550,7 @@
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -538,7 +563,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -583,6 +608,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常见的集合类"><span class="nav-number">1.</span> <span class="nav-text">常见的集合类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#区别"><span class="nav-number">1.1.</span> <span class="nav-text">区别</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#List接口"><span class="nav-number">2.</span> <span class="nav-text">List接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map接口"><span class="nav-number">3.</span> <span class="nav-text">Map接口</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashMap"><span class="nav-number">3.0.1.</span> <span class="nav-text">HashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hashtable-线程安全"><span class="nav-number">3.0.2.</span> <span class="nav-text">Hashtable  线程安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TreeMap"><span class="nav-number">3.0.3.</span> <span class="nav-text">TreeMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LinkedHashMap"><span class="nav-number">3.0.4.</span> <span class="nav-text">LinkedHashMap</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ConcurrentHashMap-线程安全"><span class="nav-number">3.0.5.</span> <span class="nav-text">ConcurrentHashMap 线程安全</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">4.</span> <span class="nav-text">Set</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#HashSet-LinkedHashSet"><span class="nav-number">4.0.1.</span> <span class="nav-text">HashSet/LinkedHashSet</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
