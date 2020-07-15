@@ -82,15 +82,15 @@
 
 
 
-<meta name="description" content="目录 注解的基本概念 注解的格式 注解类型 元注解 注解其他注解 内置注解 自定义注解     注解的原理 注解的应用场景 编译检查 在反射中使用     1.注解的基本概念Annotation注解可以把注解理解为代码里的特殊标记，这些标记可以在编译，类加载，运行时被读取，并执行相应的处理。通过注解开发人员可以在不改变原有代码和逻辑的情况下在源代码中嵌入补充信息。说人话就是，不是程序本身，对程序起">
+<meta name="description" content="目录 注解的基本概念 注解的格式 注解类型 元注解 注解其他注解 内置注解 自定义注解     注解的原理 注解的解析 注解的应用场景 编译检查 在反射中使用     1.注解的基本概念Annotation注解可以把注解理解为代码里的特殊标记，这些标记可以在编译，类加载，运行时被读取，并执行相应的处理。通过注解开发人员可以在不改变原有代码和逻辑的情况下在源代码中嵌入补充信息。说人话就是，不是程序本">
 <meta name="keywords" content="java基础">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java注解">
 <meta property="og:url" content="http:&#x2F;&#x2F;tantian123.github.io&#x2F;2020&#x2F;05&#x2F;26&#x2F;java%E6%B3%A8%E8%A7%A3&#x2F;index.html">
 <meta property="og:site_name" content="tantian&#39;s Blog">
-<meta property="og:description" content="目录 注解的基本概念 注解的格式 注解类型 元注解 注解其他注解 内置注解 自定义注解     注解的原理 注解的应用场景 编译检查 在反射中使用     1.注解的基本概念Annotation注解可以把注解理解为代码里的特殊标记，这些标记可以在编译，类加载，运行时被读取，并执行相应的处理。通过注解开发人员可以在不改变原有代码和逻辑的情况下在源代码中嵌入补充信息。说人话就是，不是程序本身，对程序起">
+<meta property="og:description" content="目录 注解的基本概念 注解的格式 注解类型 元注解 注解其他注解 内置注解 自定义注解     注解的原理 注解的解析 注解的应用场景 编译检查 在反射中使用     1.注解的基本概念Annotation注解可以把注解理解为代码里的特殊标记，这些标记可以在编译，类加载，运行时被读取，并执行相应的处理。通过注解开发人员可以在不改变原有代码和逻辑的情况下在源代码中嵌入补充信息。说人话就是，不是程序本">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-26T08:24:29.129Z">
+<meta property="og:updated_time" content="2020-06-10T15:28:48.517Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  824
+                  888
                 </span>
               
 
@@ -393,6 +393,7 @@
 </ul>
 </li>
 <li>注解的原理</li>
+<li>注解的解析</li>
 <li>注解的应用场景<ul>
 <li>编译检查</li>
 <li>在反射中使用 </li>
@@ -413,8 +414,11 @@
 <h1 id="2-注解的原理-目的"><a href="#2-注解的原理-目的" class="headerlink" title="2.注解的原理/目的"></a>2.注解的原理/目的</h1><p>获取属性的值才是使用注解的目的，使用反射的方式（java.lang.reflect.AnnotationElement接口）</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例子 通过反射获取注解</span></span><br><span class="line"><span class="meta">@Target</span>(ElementType.FIELD)</span><br><span class="line"><span class="meta">@Retention</span>(RetentionPolicy.RUNTIME)</span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> MyField &#123;</span><br><span class="line">    <span class="function">String <span class="title">description</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">length</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyFieldTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//使用我们的自定义注解</span></span><br><span class="line">    <span class="meta">@MyField</span>(description = <span class="string">"用户名"</span>, length = <span class="number">12</span>)</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testMyField</span><span class="params">()</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取类模板</span></span><br><span class="line">        Class c = MyFieldTest<span class="class">.<span class="keyword">class</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 获取所有字段</span></span><br><span class="line">        <span class="keyword">for</span>(Field f : c.getDeclaredFields())&#123;</span><br><span class="line">            <span class="comment">// 判断这个字段是否有MyField注解</span></span><br><span class="line">            <span class="keyword">if</span>(f.isAnnotationPresent(MyField<span class="class">.<span class="keyword">class</span>))</span>&#123;</span><br><span class="line">                MyField annotation = f.getAnnotation(MyField<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">                System.out.println(<span class="string">"字段:["</span> + f.getName() + <span class="string">"], 描述:["</span> + annotation.description() + <span class="string">"], 长度:["</span> + annotation.length() +<span class="string">"]"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>注解本身就是Annotation接口的子接口</p>
-<h1 id="3-注解的应用场景"><a href="#3-注解的应用场景" class="headerlink" title="3.注解的应用场景"></a>3.注解的应用场景</h1><h2 id="编译检查"><a href="#编译检查" class="headerlink" title="编译检查"></a>编译检查</h2><p>提供信息给编译器</p>
-<h2 id="参数配置"><a href="#参数配置" class="headerlink" title="参数配置"></a>参数配置</h2>
+<h1 id="3-注解的解析"><a href="#3-注解的解析" class="headerlink" title="3.注解的解析"></a>3.注解的解析</h1><p>获取注解中定义的属性值</p>
+<h1 id="3-注解的应用场景"><a href="#3-注解的应用场景" class="headerlink" title="3.注解的应用场景"></a>3.注解的应用场景</h1><h3 id="注解的一个应用"><a href="#注解的一个应用" class="headerlink" title="注解的一个应用"></a>注解的一个应用</h3><p>计算方法的运行时间</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">    <span class="comment">// 执行代码块</span></span><br><span class="line">    <span class="keyword">long</span> end = System.currentTimeMillis();</span><br><span class="line">    System.out.println(end - start);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了减少代码的冗余<br>通过自定义注解</p>
+
       
     </div>
     
@@ -563,7 +567,7 @@
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -576,7 +580,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -631,7 +635,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-注解的基本概念"><span class="nav-number">2.</span> <span class="nav-text">1.注解的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1注解的格式"><span class="nav-number">2.1.</span> <span class="nav-text">1.1注解的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2注解类型"><span class="nav-number">2.2.</span> <span class="nav-text">1.2注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元注解"><span class="nav-number">2.2.1.</span> <span class="nav-text">元注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置注解"><span class="nav-number">2.2.2.</span> <span class="nav-text">内置注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注解"><span class="nav-number">2.2.3.</span> <span class="nav-text">自定义注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-注解的原理-目的"><span class="nav-number">3.</span> <span class="nav-text">2.注解的原理/目的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注解的应用场景"><span class="nav-number">4.</span> <span class="nav-text">3.注解的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#编译检查"><span class="nav-number">4.1.</span> <span class="nav-text">编译检查</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数配置"><span class="nav-number">4.2.</span> <span class="nav-text">参数配置</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1-注解的基本概念"><span class="nav-number">2.</span> <span class="nav-text">1.注解的基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-1注解的格式"><span class="nav-number">2.1.</span> <span class="nav-text">1.1注解的格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-2注解类型"><span class="nav-number">2.2.</span> <span class="nav-text">1.2注解类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#元注解"><span class="nav-number">2.2.1.</span> <span class="nav-text">元注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内置注解"><span class="nav-number">2.2.2.</span> <span class="nav-text">内置注解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义注解"><span class="nav-number">2.2.3.</span> <span class="nav-text">自定义注解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-注解的原理-目的"><span class="nav-number">3.</span> <span class="nav-text">2.注解的原理/目的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注解的解析"><span class="nav-number">4.</span> <span class="nav-text">3.注解的解析</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-注解的应用场景"><span class="nav-number">5.</span> <span class="nav-text">3.注解的应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注解的一个应用"><span class="nav-number">5.0.1.</span> <span class="nav-text">注解的一个应用</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

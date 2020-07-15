@@ -91,7 +91,7 @@
 <meta property="og:description" content="冒泡排序从左到右遍历，每次比较相邻的两个元素，将大的放到右边每次排序，都会选出当前最大的元素，放在最后一直重复，直到选完。 12345int[] a=new int[n];for(int l=n-1;l&amp;gt;0;l--)    for(int i=0;i&amp;lt;l;i++)        if(a[i]&amp;gt;a[i+1]) swap(i,i+1); 选择排序从左到右遍历，每次比较所有元素，保存">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http:&#x2F;&#x2F;tantian123.github.io&#x2F;images&#x2F;sort.jpg">
-<meta property="og:updated_time" content="2020-05-21T11:26:06.607Z">
+<meta property="og:updated_time" content="2020-06-29T12:21:35.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http:&#x2F;&#x2F;tantian123.github.io&#x2F;images&#x2F;sort.jpg">
 
@@ -428,6 +428,7 @@
 <p>2.稳定  不稳定<br>相等的两个元素 经过排序后，原有的顺序不变</p>
 <p>3.内排序 外排序 原地排序<br>排序操作在内存<br>数据大太，所以放在磁盘，所以排序需要通过磁盘和内存进行数据传输<br>空间复杂度O(1)的排序</p>
 <p><img src="/images/sort.jpg" alt="image"></p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><p>n比较小时，使用插入排序或者选择排序<br>n比较大，使用快排，堆排，归并<br>文件基本有序，使用插入，冒泡，快排<br>要求稳定，归并</p>
 
       
     </div>
@@ -577,7 +578,7 @@
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -590,7 +591,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
@@ -645,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">6.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">7.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">8.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">9.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">10.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评价一个排序算法"><span class="nav-number">11.</span> <span class="nav-text">评价一个排序算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选择排序"><span class="nav-number">2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入排序"><span class="nav-number">3.</span> <span class="nav-text">插入排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#希尔排序"><span class="nav-number">4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#快速排序"><span class="nav-number">5.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#归并排序"><span class="nav-number">6.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆排序"><span class="nav-number">7.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#桶排序"><span class="nav-number">8.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计数排序"><span class="nav-number">9.</span> <span class="nav-text">计数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基数排序"><span class="nav-number">10.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#评价一个排序算法"><span class="nav-number">11.</span> <span class="nav-text">评价一个排序算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">12.</span> <span class="nav-text">应用场景</span></a></li></ol></div>
             
 
           </div>

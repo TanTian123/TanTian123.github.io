@@ -82,14 +82,14 @@
 
 
 
-<meta name="description" content="目录 反射的概念小写是关键字 大写是类  class类的常用方法classfornamenewinstancegetclassloadergetconstructiongetmethodgetDeclaredFields  原理  优缺点  灵活 性能低了 应用  反射相关的类  获取class类1.调用类的.class属性 1Class c1=String.class; 2.通过对象获取  ge">
+<meta name="description" content="目录 反射的概念小写是关键字 大写是类  class类的常用方法classfornamenewinstancegetclassloadergetconstructiongetmethodgetDeclaredFields  原理  优缺点  灵活 性能低了 应用  反射相关的类  框架  获取class类1.调用类的.class属性 1Class c1=String.class; 2.通过对象获取">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java反射">
 <meta property="og:url" content="http:&#x2F;&#x2F;tantian123.github.io&#x2F;2020&#x2F;05&#x2F;26&#x2F;java%E5%8F%8D%E5%B0%84&#x2F;index.html">
 <meta property="og:site_name" content="tantian&#39;s Blog">
-<meta property="og:description" content="目录 反射的概念小写是关键字 大写是类  class类的常用方法classfornamenewinstancegetclassloadergetconstructiongetmethodgetDeclaredFields  原理  优缺点  灵活 性能低了 应用  反射相关的类  获取class类1.调用类的.class属性 1Class c1=String.class; 2.通过对象获取  ge">
+<meta property="og:description" content="目录 反射的概念小写是关键字 大写是类  class类的常用方法classfornamenewinstancegetclassloadergetconstructiongetmethodgetDeclaredFields  原理  优缺点  灵活 性能低了 应用  反射相关的类  框架  获取class类1.调用类的.class属性 1Class c1=String.class; 2.通过对象获取">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-26T18:23:29.349Z">
+<meta property="og:updated_time" content="2020-07-09T10:49:52.550Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -386,7 +386,7 @@
 <p>class类的常用方法<br>classforname<br>newinstance<br>getclassloader<br>getconstruction<br>getmethod<br>getDeclaredFields</p>
 <ul>
 <li>原理<br>  优缺点  灵活 性能低了</li>
-<li>应用<br>  反射相关的类</li>
+<li>应用<br>  反射相关的类<br>  框架</li>
 </ul>
 <h1 id="获取class类"><a href="#获取class类" class="headerlink" title="获取class类"></a>获取class类</h1><p>1.调用类的.class属性</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class c1=String<span class="class">.<span class="keyword">class</span></span>;</span><br></pre></td></tr></table></figure>
@@ -405,12 +405,12 @@
 <blockquote>
 <p>符号引用：hello<br>直接引用：0xaabbccdd</p>
 </blockquote>
-<h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><p>1.就是执行类构造器clinit()的过程<br>clinit()是由静态代码块和类变量的赋值语句 合并组成的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class people&#123;</span><br><span class="line">    static&#123;</span><br><span class="line">        m=300;</span><br><span class="line">    &#125;</span><br><span class="line">    static int m=100;</span><br><span class="line">&#125;</span><br><span class="line">合并后</span><br><span class="line">clinit()&#123;</span><br><span class="line">     m=300;</span><br><span class="line">     m=100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="类的初始化"><a href="#类的初始化" class="headerlink" title="类的初始化"></a>类的初始化</h2><p>1.就是执行类构造器cinit()的过程<br>cinit()是由静态代码块和类变量的赋值语句 合并组成的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class people&#123;</span><br><span class="line">    static&#123;</span><br><span class="line">        m=300;</span><br><span class="line">    &#125;</span><br><span class="line">    static int m=100;</span><br><span class="line">&#125;</span><br><span class="line">合并后</span><br><span class="line">cinit()&#123;</span><br><span class="line">     m=300;</span><br><span class="line">     m=100;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>类构造器是构造类的信息的 clinit=class init</p>
+<p>类构造器是构造类的信息的 cinit=class init</p>
 </blockquote>
-<p>2.当初始化一个类时，先检查父类是否初始化，否则先初始化父类<br>3.虚拟机会保证一个类的clinit()方法在多线程中被正确加锁和同步</p>
+<p>2.当初始化一个类时，先检查父类是否初始化，否则先初始化父类<br>3.虚拟机会保证一个类的cinit()方法在多线程中被正确加锁和同步</p>
 <h2 id="什么时候进行类初始化"><a href="#什么时候进行类初始化" class="headerlink" title="什么时候进行类初始化"></a>什么时候进行类初始化</h2><p>类的主动引用，类初始化<br>类的被动引用，不会类初始化</p>
 <p>主动引用</p>
 <ul>
@@ -587,7 +587,7 @@
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -600,7 +600,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

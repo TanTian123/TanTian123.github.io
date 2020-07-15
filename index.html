@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/06/PriorityQueue%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/07/09/Java%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="谭天">
@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/06/PriorityQueue%E4%BD%BF%E7%94%A8/" itemprop="url">PriorityQueue使用</a></h1>
+                <a class="post-title-link" href="/tantian123.github.io/2020/07/09/Java%E6%B7%B1%E6%8B%B7%E8%B4%9D%E5%92%8C%E6%B5%85%E6%8B%B7%E8%B4%9D/" itemprop="url">Java深拷贝和浅拷贝</a></h1>
         
 
         <div class="post-meta">
@@ -308,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-06T21:26:47+08:00">
-                2020-06-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T19:36:14+08:00">
+                2020-07-09
               </time>
             
 
@@ -340,7 +340,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  153
+                  120
                 </span>
               
 
@@ -379,15 +379,15 @@
       
         
           
-            <p>PriorityQueue优先队列<br>//满了之后，并不会自动替换元素</p>
-<h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>每次都能保证取出的元素是队列中权值最小的<br>可以通过comparator接口，实现排序</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Queue&lt;Integer&gt; q=<span class="keyword">new</span> PriorityQueue&lt;Integer&gt;();</span><br></pre></td></tr></table></figure>
-<h1 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h1><p>add offer  插入元素<br>element peek  获取队首<br>remove poll  删除队首并返回</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//常用构造函数</span></span><br><span class="line">PriorityQueue()</span><br><span class="line">PriorityQueue(<span class="keyword">int</span> initialCapacity, Comparator&lt;? <span class="keyword">super</span> E&gt; comparator)<span class="comment">//初始容量，指定的比较器</span></span><br></pre></td></tr></table></figure>
+            <p>复制变量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">int</span> b=a;</span><br></pre></td></tr></table></figure>
+<p>复制对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Student s1=<span class="keyword">new</span> Student(<span class="string">"s1"</span>);</span><br><span class="line">Student s2=s1;</span><br><span class="line">s2.name=<span class="string">"s2"</span>;</span><br><span class="line">System.out.println(s1.name);</span><br></pre></td></tr></table></figure>
+<p>它们指向同一个对象</p>
+<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><h2 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h2><p>拷贝出一个全新的对象，与之前无关</p>
+<h2 id="浅拷贝"><a href="#浅拷贝" class="headerlink" title="浅拷贝"></a>浅拷贝</h2><p>复制了之前对象的引用，并没有开辟新的空间</p>
+<p>使用clone方法和直接赋值 都是浅拷贝<br>Object中本地clone()方法，默认是浅拷贝<br>如果要深拷贝，要重写clone方法</p>
 
-
-<p>使用匿名内部类 </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">PriorityQueue&lt;Integer&gt; queue = <span class="keyword">new</span> PriorityQueue&lt;Integer&gt;(<span class="keyword">new</span> Comparator&lt;Integer&gt;()&#123;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Integer o1, Integer o2)</span></span>&#123;</span><br><span class="line">		<span class="keyword">return</span> o1.compareTo(o2);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
           
         
       
@@ -448,7 +448,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/05/java%E6%B3%9B%E5%9E%8B/">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/07/09/%E8%AF%A6%E8%A7%A3%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="谭天">
@@ -467,7 +467,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/05/java%E6%B3%9B%E5%9E%8B/" itemprop="url">java泛型</a></h1>
+                <a class="post-title-link" href="/tantian123.github.io/2020/07/09/%E8%AF%A6%E8%A7%A3%E5%B8%83%E9%9A%86%E8%BF%87%E6%BB%A4%E5%99%A8/" itemprop="url">详解布隆过滤器</a></h1>
         
 
         <div class="post-meta">
@@ -479,8 +479,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T22:57:00+08:00">
-                2020-06-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T18:53:11+08:00">
+                2020-07-09
               </time>
             
 
@@ -511,7 +511,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  303
+                  356
                 </span>
               
 
@@ -550,1464 +550,1506 @@
       
         
           
-            <h1 id="什么是泛型-generic"><a href="#什么是泛型-generic" class="headerlink" title="什么是泛型  generic"></a>什么是泛型  generic</h1><p>将具体的类型参数化<br>只在编译期间有效，随后编译器会用具体的类型来代替它</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Generic</span>&lt;<span class="title">T</span>&gt;</span>&#123; </span><br><span class="line">    <span class="comment">//泛型加在类名的后面，&lt;&gt;里面的就是形参 一般写大写字母</span></span><br><span class="line">    <span class="comment">//可以定义多个 之间用逗号隔开</span></span><br><span class="line">    <span class="comment">//key这个成员变量的类型为T,T的类型由外部指定,</span></span><br><span class="line">    <span class="keyword">private</span> T key;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Generic</span><span class="params">(T key)</span> </span>&#123; <span class="comment">//泛型构造方法形参key的类型也为T，T的类型由外部指定</span></span><br><span class="line">        <span class="keyword">this</span>.key = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> T <span class="title">getKey</span><span class="params">()</span></span>&#123; <span class="comment">//泛型方法getKey的返回值类型为T，T的类型由外部指定</span></span><br><span class="line">        <span class="keyword">return</span> key;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+            <h1 id="Bloom-Filter"><a href="#Bloom-Filter" class="headerlink" title="Bloom Filter"></a>Bloom Filter</h1><h2 id="1-构成"><a href="#1-构成" class="headerlink" title="1.构成"></a>1.构成</h2><p>一个很长的二进制向量(位图)和一系列随机映射函数（哈希函数）</p>
+<h3 id="bitarray-bitmap"><a href="#bitarray-bitmap" class="headerlink" title="bitarray/bitmap"></a>bitarray/bitmap</h3><p>一个数组，数组每一位存储一个bit，每个bit只能是0或者1</p>
+<h3 id="多个哈希函数"><a href="#多个哈希函数" class="headerlink" title="多个哈希函数"></a>多个哈希函数</h3><p>有k个hash函数，<br>将得到的值，对应在bitarray上，标记为1</p>
+<h2 id="2-原理"><a href="#2-原理" class="headerlink" title="2.原理"></a>2.原理</h2><h3 id="可能在集合中-绝对不在集合中"><a href="#可能在集合中-绝对不在集合中" class="headerlink" title="可能在集合中 绝对不在集合中"></a>可能在集合中 绝对不在集合中</h3><p>我们搜索一个值的时候，若该值经过 K 个哈希函数运算后的任何一个索引位为 ”0“，那么该值肯定不在集合中。但如果所有哈希索引值均为 ”1“，则只能说该搜索的值可能存在集合中。</p>
+<h2 id="3-作用"><a href="#3-作用" class="headerlink" title="3.作用"></a>3.作用</h2><p>布隆过滤器可以用于检索一个元素是否在一个集合中。它的优点是空间效率和查询时间都远远超过一般的算法，缺点是有一定的误识别率和删除困难。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><p>存放01 所以占用内存少，查询快</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>数据增加，误判率会增加，且无法撤回已加入的值,无法确定数据一定存在</p>
+<h2 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h2><p>两个方面：缓存穿透和 大量数据，判断给定值的是否在其中</p>
+<p>布隆过滤器广泛应用于网页黑名单系统、垃圾邮件过滤系统、爬虫网址判重系统等</p>
+<h2 id="5-实现"><a href="#5-实现" class="headerlink" title="5.实现"></a>5.实现</h2><p>guava实现<br>redis实现布隆过滤器</p>
 
-<h1 id="为什么要泛型"><a href="#为什么要泛型" class="headerlink" title="为什么要泛型"></a>为什么要泛型</h1><p>早期java是没有泛型的，用Object类</p>
-<p>泛型的作用是在编译期帮助发现错误并且增强可读性</p>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/07/08/redis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/07/08/redis%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8/" itemprop="url">redis快速入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-08T02:31:24+08:00">
+                2020-07-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  348
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>Nosql 数据库<br>基本数据类型<br>只存KV形式<br>K是字符串<br>V有5种形式：<br>String 字符串<br>HashMap 哈希表<br>List 列表<br>Set 集合<br>ZSet 有序集合</p>
+<p>查询速度快，完全在内存中，没有磁盘的IO</p>
+<h1 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h1><p>略</p>
+<h2 id="远程连接"><a href="#远程连接" class="headerlink" title="远程连接"></a>远程连接</h2><p>图形化界面 redis Desktop Manager</p>
+<h1 id="打开"><a href="#打开" class="headerlink" title="打开"></a>打开</h1><p>运行redis-server.exe 监听6379端口<br>运行redis_cli,exe 会去连接6379</p>
+<h1 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h1><p>set k1 v1<br>get k1<br>del k1</p>
+<p>mset k1 v1 k2 v2<br>mget k1 k2</p>
+<hr>
+<p>hset h1 name tt<br>hget h1 name<br>hset h1 name tt2<br>hmset h1 name tt age 20 (多个值要用mset)</p>
+<p>hgetall h1</p>
+<p>del h1<br>hdel h1 age</p>
+<hr>
+<p>list只有push和pop的方法</p>
+<p>lpush L1 v1  加在左边<br>lpush L1 v1 v2 v3 v4 v5<br>lrange L1 0 2 查询0 1 2三个元素（-1代表无穷）<br>没有rrange<br>rpush L1 r1 r2 r3 加在右边</p>
+<p>lpop L1<br>rpop L1</p>
+<hr>
+<p>Set<br>sadd S1 v1<br>smembers S1 获取所有元素</p>
+<hr>
+<p>shutdown 关闭</p>
+<h1 id="订阅和发布"><a href="#订阅和发布" class="headerlink" title="订阅和发布"></a>订阅和发布</h1><p>类似消息队列</p>
+<p>打开两个客户端AB<br>A输入<br>subscribe foo<br>进入订阅模式<br>B输入<br>publish foo hellooooo<br>进行发布<br>A收到hellooooo</p>
+<p>此外，订阅还支持通配符 a?b a*b</p>
+<h1 id="redis优缺点"><a href="#redis优缺点" class="headerlink" title="redis优缺点"></a>redis优缺点</h1><p>性能高<br>原子性<br>高速读写</p>
+<p>持久化代价高<br>占用内存过多</p>
+<h1 id="redis的内存维护策略"><a href="#redis的内存维护策略" class="headerlink" title="redis的内存维护策略"></a>redis的内存维护策略</h1><p>1.为数据设置超时时间<br>expire key time 单位是秒<br>作用：手机验证码/限制访问频率/限时活动/微博热搜</p>
+<p>ttl key 查看过期时间<br>2.采用LRU<br>volatile-lru<br>allkeys-lru</p>
+<h1 id="redis面试题"><a href="#redis面试题" class="headerlink" title="redis面试题"></a>redis面试题</h1>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/07/06/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/07/06/java%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%80%BB%E7%BB%93/" itemprop="url">java线程池总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-06T14:12:51+08:00">
+                2020-07-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  538
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Executor<br>ThreadPoolExecutor</p>
+<h1 id="面试常问"><a href="#面试常问" class="headerlink" title="面试常问"></a>面试常问</h1><h2 id="什么是线程池"><a href="#什么是线程池" class="headerlink" title="什么是线程池"></a>什么是线程池</h2><p>JUC</p>
+<h2 id="有什么作用"><a href="#有什么作用" class="headerlink" title="有什么作用"></a>有什么作用</h2><p>一项任务的时间=线程创建时间+任务执行过程时间+线程销毁时间<br>线程池通过复用线程，减少创建时间和销毁时间</p>
+<h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><h2 id="执行过程"><a href="#执行过程" class="headerlink" title="执行过程"></a>执行过程</h2><p>一共三次判断，<br>使用者提交任务<br>1.如果线程池中的线程小于corePoolSize时（即核心线程未满）<br>就会创建新线程直接执行任务。</p>
+<p>2.如果线程池中的线程大于corePoolSize时（核心线程满了）<br>就会暂时把任务存储到工作队列workQueue中等待执行。</p>
+<p>3、如果工作队列workQueue也满时：<br>当线程数小于最大线程池数maximumPoolSize时，就会创建新线程（救急线程）来处理，<br>而线程数大于等于最大线程池数maximumPoolSize时，就会执行拒绝策略。</p>
+<h2 id="核心参数"><a href="#核心参数" class="headerlink" title="核心参数"></a>核心参数</h2><p>高三位线程状态  低29位线程数量</p>
+<p>7个参数，注意参数类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">public ThreadPoolExecutor(int corePoolSize,  </span><br><span class="line">                              int maximumPoolSize,  </span><br><span class="line">                              long keepAliveTime,  </span><br><span class="line">                              TimeUnit unit,  </span><br><span class="line">                              BlockingQueue&lt;Runnable&gt; workQueue,  </span><br><span class="line">                              ThreadFactory threadFactory,  </span><br><span class="line">                              RejectedExecutionHandler handler)</span><br></pre></td></tr></table></figure>
+<p>其中的线程包括：核心线程和救急线程<br>核心线程不会销毁 救急线程有最大生存时间</p>
+<p>corePoolSize线程池的核心线程数目<br>maximumPoolSize最大线程数目<br>keepAliveTime空余线程存活时间，指的是超过corePoolSize的空余线程达到多长时间才进行销毁。<br>unit销毁的时间单位。<br>workQueue存储等待执行线程的工作队列。<br>threadFactory创建线程的工厂，一般用默认即可。<br>handler拒绝策略，当工作队列、线程池全已满时如何拒绝新任务，默认抛出异常。</p>
+<h2 id="jdk提供的四种拒绝策略"><a href="#jdk提供的四种拒绝策略" class="headerlink" title="jdk提供的四种拒绝策略"></a>jdk提供的四种拒绝策略</h2><p>DiscardPolicy 放弃这个任务<br>OldestDiscardPolicy 放弃队列中最早的任务，取而代之<br>CallerRunsPolicy  运行任务<br>AbortPolicy 默认的策略，抛出RejectedExecutionException异常</p>
+<p>其它第三方框架并没有使用jdk提供的，<br>dubbo  抛出RejectedExecutionException异常，并进行日志记录<br>netty 创建一个新线程<br>ActiveMQ 超市等待60s后尝试放入</p>
+<h2 id="常用的几个"><a href="#常用的几个" class="headerlink" title="常用的几个"></a>常用的几个</h2><h3 id="newFixedThreadPool固定大小的线程池"><a href="#newFixedThreadPool固定大小的线程池" class="headerlink" title="newFixedThreadPool固定大小的线程池"></a>newFixedThreadPool固定大小的线程池</h3><h3 id="newCachedThreadPool带缓冲的线程池"><a href="#newCachedThreadPool带缓冲的线程池" class="headerlink" title="newCachedThreadPool带缓冲的线程池"></a>newCachedThreadPool带缓冲的线程池</h3><h3 id="newSingleThreadExecutor单线程线程池"><a href="#newSingleThreadExecutor单线程线程池" class="headerlink" title="newSingleThreadExecutor单线程线程池"></a>newSingleThreadExecutor单线程线程池</h3><h3 id="newScheduledThreadPool"><a href="#newScheduledThreadPool" class="headerlink" title="newScheduledThreadPool"></a>newScheduledThreadPool</h3>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/07/02/java%E7%BB%A7%E6%89%BF%E5%92%8C%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/07/02/java%E7%BB%A7%E6%89%BF%E5%92%8C%E5%AE%9E%E7%8E%B0/" itemprop="url">java继承和实现</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-02T01:21:54+08:00">
+                2020-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  21
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在看runnablefuture 的源码时<br>看到接口继承了接口，使用的是extends</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/29/springboot%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/06/29/springboot%E5%AD%A6%E4%B9%A0/" itemprop="url">springboot学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-29T21:53:04+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  485
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>开启了各种自动装配，简化了代码开发，不需要各种配置文件，只需要引入相关的依赖。<br>不需要 web.xml springmvc.xml 且tomcat内嵌在框架中<br>不需要配置JSON解析，支持REST<br>能个性化配置</p>
+<p>所以我们直接写注解就行，不用扫描的配置</p>
+<hr>
+<p>使用：<br>创建maven工程，导入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--先引父包--&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">parent</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-parent<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">parent</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-web<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>写以下文件</p>
+<p>启动内置的tomcat，创建一个启动类<br>类的注解是@SpringBootApplication，是启动的入口</p>
+<p>static文件夹是spring默认的一个扫描路径，可以在地址栏直接访问</p>
+<h2 id="整合html-使用thymeleaf模板"><a href="#整合html-使用thymeleaf模板" class="headerlink" title="整合html 使用thymeleaf模板"></a>整合html 使用thymeleaf模板</h2><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">"$&#123;message&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如何放,还是用model传<br>如何取,</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">xml:th</span>=<span class="string">"http://www.thymeleaf.org"</span>&gt;</span><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"student:$&#123;list&#125;"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;student.id&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;student.name&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;student.age&#125;"</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>同时配置映射</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">spring.thymeleaf.prefix</span>=<span class="string">classpath:/templates/</span></span><br><span class="line"><span class="meta">spring.thymeleaf.suffix</span>=<span class="string">.html</span></span><br><span class="line"><span class="meta">spring.thymeleaf.encoding</span>=<span class="string">UTF-8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="thymeleaf常用语法"><a href="#thymeleaf常用语法" class="headerlink" title="thymeleaf常用语法"></a>thymeleaf常用语法</h4><p>1.赋值<br>2.拼接<br>3.条件判断 if/unless 成立时/不成立时，显示内容<br>4.循环<br>5.stat中可以取出信息 stat是一个状态变量，可以取index/count/size/current/even/odd/first/last等信息<br>6.th:style添加样式<br>7.url 添加链接 使用@{…} a标签结合th:href th:src </p>
+<h1 id="springboot数据校验"><a href="#springboot数据校验" class="headerlink" title="springboot数据校验"></a>springboot数据校验</h1><p>数据格式的校验还是放在前端好些，</p>
+<p><a href="https://www.cnblogs.com/love-wzy/p/10348519.html" target="_blank" rel="noopener">https://www.cnblogs.com/love-wzy/p/10348519.html</a></p>
+<p>@NotNull注解<br>@NotNull(message=”id不能是空的”)</p>
+<p>@NotEmpty注解<br>notnull是没传，notempty是为空</p>
+<p>@Length<br>@Future<br>@Min</p>
+<h1 id="springboot整合jdbc"><a href="#springboot整合jdbc" class="headerlink" title="springboot整合jdbc"></a>springboot整合jdbc</h1><p>相关依赖<br>数据源</p>
+<p>spring-boot-starter-jdbc<br>mysql-connector-java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/29/java%E6%9E%9A%E4%B8%BE%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/06/29/java%E6%9E%9A%E4%B8%BE%E4%BD%BF%E7%94%A8%E8%AF%A6%E8%A7%A3/" itemprop="url">java枚举使用详解</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-29T20:25:36+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  156
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>应用场景：有些类的实例对象是固定的，比如 一星期只有七天<br>枚举就是针对这些场景设计的。<br>结合switch case使用，减少了大量的ifelse语句</p>
+<p>定义常量</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这里命名的后缀建议是Enum</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">enum</span> ThreadStateEnum&#123;</span><br><span class="line">    NEW,RUNNABLE,BLOCKED,WAITTING,TIME_WAITTING,TERMINATED</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ThreadStateEnum <span class="keyword">enum</span>=ThreadStateEnum.NEW;</span><br></pre></td></tr></table></figure>
+
+<p>结合switch使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">select</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ThreadStateEnum state=ThreadStateEnum.NEW;</span><br><span class="line">    <span class="keyword">switch</span>(state)&#123;</span><br><span class="line">        <span class="keyword">case</span> NEW: </span><br><span class="line">            System.out.println(<span class="string">"new"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>对枚举类添加方法</p>
+<p>``` java<br>public enum ThreadStateEnum{<br>    NEW(“new”,1),RUNNABLE,BLOCKED,WAITTING,TIME_WAITTING,TERMINATED;<br>    private String name;<br>    private int index;</p>
+<pre><code>// 构造方法  
+private ThreadStateEnum(String name, int index) {  
+    this.name = name;  
+    this.index = index;  
+}
+
+public String getName(){
+    return name;
+}</code></pre><p>}</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/29/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/06/29/%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/" itemprop="url">类加载和双亲委派机制</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-29T15:11:26+08:00">
+                2020-06-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  508
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  1
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是双亲委派机制"><a href="#什么是双亲委派机制" class="headerlink" title="什么是双亲委派机制"></a>什么是双亲委派机制</h1><p>了解类的加载</p>
+<p>五个过程，载入、链接（验证、准备、解析）和初始化<br>载入，将类的class文件读入内存，并为它创建一个java.lang.class对象<br>验证，对二进制字节流进行校验，只有符合 JVM 字节码规范的才能被 JVM 正确执行<br>准备，对类变量（也称为静态变量，static 关键字修饰的）分配内存并初始化<br>解析，将常量池中的符号引用转化为直接引用<br>初始化，</p>
+<p>了解类加载器<br>类的加载由类加载器完成，类加载器是JVM提供的<br>了解类加载器的分类<br>bootstrap class loader 启动类加载器<br>加载 jre/lib 包下面的 jar 文件，比如说常见的 rt.jar。<br>extensions class loader 扩展类加载器<br>加载 jre/lib/ext 包下面的 jar 文件<br>system class loader 应用类加载器<br>根据程序的类路径（classpath）来加载 Java 类<br>了解类加载机制<br>三种，全盘负责，双亲委派，缓存机制</p>
+<p><strong>类加载器的层次关系，就是类加载器的双亲委派模型。</strong></p>
+<h1 id="如何运行的"><a href="#如何运行的" class="headerlink" title="如何运行的"></a>如何运行的</h1><p>如果一个类加载器收到类加载的请求，首先不会自己去加载这个类，而是将请求委派给父类加载器，直到顶层。<br>如果父类无法完成即搜索范围内没有这个类，就会让子加载器自己完成。</p>
+<h1 id="为什么需要，好处"><a href="#为什么需要，好处" class="headerlink" title="为什么需要，好处"></a>为什么需要，好处</h1><p>避免了多个同样的字节码的重复加载，比如说类A和类B都需要加载System类，那么不使用委托机制，两个类都会加载一份System的字节码；如果使用委托机制，就会递归地向父类查找，此时，如果类A加载了，类B再去请求，就会直接返回那份字节码文件，而不是重新加载。<br>防止核心API库被修改</p>
+<h1 id="如何实现自定义类加载器"><a href="#如何实现自定义类加载器" class="headerlink" title="如何实现自定义类加载器"></a>如何实现自定义类加载器</h1><p>继承ClassLoader，重载findClass方法</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/28/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/06/28/java%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B1/" itemprop="url">java网络编程1</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-28T12:55:45+08:00">
+                2020-06-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  671
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  2
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>本书结构<br>I/O和线程<br>流<br>线程<br>Internet地址<br>URL URI<br>HTTP<br>Socket类<br>非阻塞I/O<br>UDP</p>
+<p>第一章</p>
+<p>TCP/IP参考模型<br>数据链路层  ARP和RARP<br>网络层  IP ICMP<br>传输层  TCP UDP<br>应用层 HTTP DNS POP FTP</p>
+<p>java不支持ICMP 所以java唯一的网络层协议是IP<br>也不支持发送原始IP数据报，只允许TCP UDP</p>
+<p>IP地址</p>
+<p>端口1-65535<br>HTTP是80</p>
+<p>代理服务器：防火墙 本地缓存<br>代理服务器可以理解HTTP FTP SMTP ，但是不能理解自定义的协议</p>
+<p>第二章</p>
+<p>java独特的I/O流<br>建立在stream之上，输入流读取数据，输出流写入数据<br>filter过滤器可以串到输入/输出流上，过滤器可以修改数据或者是提供额外的方法<br>reader和writer同样，允许程序读写文本（即字符）而不是字节。</p>
+<p>流是同步的，</p>
+<p>输出流<br>OutputStream<br>方法 write<br>flush 缓冲区未满，强迫发送<br>close 释放文件句柄或者端口</p>
+<p>子类使用这些方法，向特定的介质中写入数据。例如Bytexxx</p>
+<p>输入流<br>InputStream<br>Filexxx从文件<br>Telnetxxx从网络连接中</p>
+<p>read 流的结束是返回-1，输入输出很慢，所以通常放在线程里<br>close</p>
+<p>过滤器输出流<br>PrintStream<br>例如System.out</p>
+<p>InetAddress类<br>包括一个主机名和一个IP地址<br>Socket ServerSocket URL DatagramSocket DatagramPacket等类都使用到了这个</p>
+<p>该类没有公共构造函数（非公开），通过静态工厂来获取</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> InetAddress[] getAllByName(String host)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> InetAddress <span class="title">getByAddress</span><span class="params">(<span class="keyword">byte</span>[] addr)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> InetAddress <span class="title">getByAddress</span><span class="params">(String host,<span class="keyword">byte</span>[] addr)</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> InetAddress <span class="title">getByName</span><span class="params">(String host)</span> <span class="comment">//可以通过域名或者IO创建</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="keyword">static</span> InetAddress <span class="title">getLocalHost</span><span class="params">()</span> <span class="comment">//获得本机地址对象</span></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">getHostName</span><span class="params">()</span></span>;<span class="comment">//获得对象中存储的域名</span></span><br><span class="line">getHostAddress();<span class="comment">//获得对象中存储的IP</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+<p>java.net.URL<br>是一个final类，不可再变，保证了线程安全<br>使用了策略设计模式<br>这个对象的自动包括，协议 主机名 端口号 路径 ref 查询字符串等</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">URL(String url)</span><br><span class="line">URL(String protocol,String hostname,String file)</span><br></pre></td></tr></table></figure>
+
+
+<p>URLEncoder<br>URLEncoder.encode(“”,”UTF-8”);<br>URLDecoder<br>URLDecoder.decode(“”,”UTF-8”);</p>
+<p>TCP编程<br>利用socket建立连接，然后从连接中获取它的输入输出流即可<br>利用serversocket接收</p>
+<p>如何复用socket连接<br>循环<br>如何使服务端支持多个客户端连接<br>线程</p>
+<p>UDP编程<br>DatagramSocket类<br>DatagramPacket类 数据封装</p>
+<p>BIO NIO AIO</p>
+<p>服务器端启动一个 ServerSocket<br>客户端启动 Socket 对服务器进行通信，默认情况下服务器端需要对每个客户 建立一个线程与之通讯<br>客户端发出请求后, 先咨询服务器是否有线程响应，如果没有则会等待，或者被拒绝<br>如果有响应，客户端线程会等待请求结束后，在继续执行</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+    <div>
+      
+    </div>
+
+
+
+
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+  
+
+         
+
+	  
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/26/spring%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="谭天">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tantian's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/tantian123.github.io/2020/06/26/spring%E5%85%A5%E9%97%A8/" itemprop="url">spring入门</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-26T10:31:02+08:00">
+                2020-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  1.3k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  6
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>spring实现依赖注入<br>spring实现面向切面编程</p>
+<p>spring框架的两大核心机制<br>IoC/DI  控制反转/依赖注入<br>AOP   面向切面编程</p>
+<h1 id="spring的概念"><a href="#spring的概念" class="headerlink" title="spring的概念"></a>spring的概念</h1><p>企业级的开发框架，将应用程序进行分层，自主选择组件</p>
+<p>MVC Struts2 SpringMVC<br>ORM层 Hibernate MyBatis Spring Data</p>
+<h1 id="控制反转"><a href="#控制反转" class="headerlink" title="控制反转"></a>控制反转</h1><p>在传统的开发中，调用对象时，通常是调用者new一个对象</p>
+<p>而在spring框架中，创建对象不再由调用者负责，而是交给Ioc容器创建，<br>再推送给调用者。</p>
+<p>目的：解耦合</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><p><bean>标签就是一个对象<br>id  相当于对象名<br>class属性  对应的是对象的模板类（所有交给Ioc容器的类 必须有无参构造）<br>它的子标签<property> 就是其成员变量<br>子标签的name 是属性名 value是值（基本数据类型和String才能赋值，如果是其它，不能通过value赋值 ）<br>ref 将Ioc中的另外一个bean赋给当前成员变量，这就是DI</p>
+<p>配置文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span></span><br><span class="line"><span class="comment">&lt;!--bean命名空间--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">beans</span> <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xmlns:aop</span>=<span class="string">"http://www.springframework.org/schema/aop"</span></span></span><br><span class="line"><span class="tag">       <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/context</span></span></span><br><span class="line"><span class="tag"><span class="string">       https://www.springframework.org/schema/context/spring-context.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans</span></span></span><br><span class="line"><span class="tag"><span class="string">       http://www.springframework.org/schema/beans/spring-beans.xsd</span></span></span><br><span class="line"><span class="tag"><span class="string">"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student"</span> <span class="attr">class</span>=<span class="string">"com.tt.entity.Student"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"谭天"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//加载配置文件</span></span><br><span class="line">ApplicationContext applicationContext=<span class="keyword">new</span> ClassPathXmlApplicationContext(<span class="string">"spring.xml"</span>);</span><br><span class="line">Student student1= (Student) applicationContext.getBean(<span class="string">"student"</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="如果是嵌套的类"><a href="#如果是嵌套的类" class="headerlink" title="如果是嵌套的类"></a>如果是嵌套的类</h3><p>student里面有address类</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student"</span> <span class="attr">class</span>=<span class="string">"com.tt.entity.Student"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"谭天"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"18"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">ref</span>=<span class="string">"address"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"address"</span> <span class="attr">class</span>=<span class="string">"com.tt.entity.Address"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"myaddress"</span> <span class="attr">value</span>=<span class="string">"fengc"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="IoC的底层原理"><a href="#IoC的底层原理" class="headerlink" title="IoC的底层原理"></a>IoC的底层原理</h2><p>1.加载这个配置文件，解析xml<br>2.通过反射机制实例化配置文件中配置的所有bean</p>
+<h3 id="dom4j实现ioc的底层"><a href="#dom4j实现ioc的底层" class="headerlink" title="dom4j实现ioc的底层"></a>dom4j实现ioc的底层</h3><p>用到了xml解析和反射的原理</p>
 <ul>
-<li>不需要强制转换，交给了编译器</li>
-<li>编写时，就限制了类型 ，提高了代码可读性和稳定性</li>
+<li>导入依赖</li>
+<li>写ApplicationContext接口</li>
+<li>写ApplicationContext的实现类ClassPathXmlApplicationContext</li>
+<li>实现getBean方法，这个方法返回一个对象</li>
 </ul>
-<h1 id="泛型是如何工作的-类型擦除"><a href="#泛型是如何工作的-类型擦除" class="headerlink" title="泛型是如何工作的  类型擦除"></a>泛型是如何工作的  类型擦除</h1><p>编译器在编译时擦除了所有类型相关的信息，所以在运行时不存在任何类型相关的信息</p>
-<p>没有使用时，默认为Object类型</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
+<h2 id="问题：一个类同时只能存在一个实例-（运行时类获取bean）"><a href="#问题：一个类同时只能存在一个实例-（运行时类获取bean）" class="headerlink" title="问题：一个类同时只能存在一个实例 （运行时类获取bean）"></a>问题：一个类同时只能存在一个实例 （运行时类获取bean）</h2><p>如何解决：通过有参构造创建bean</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--name属性可省略  --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"student2"</span> <span class="attr">class</span>=<span class="string">"com.tt.entity.Student"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">value</span>=<span class="string">"3"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"小天"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"age"</span> <span class="attr">value</span>=<span class="string">"1"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"address"</span> <span class="attr">ref</span>=<span class="string">"address"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
+<h1 id="AOP"><a href="#AOP" class="headerlink" title="AOP"></a>AOP</h1><p>什么是AOP<br>面向切面编程，我们开发是纵向开发，横向扩展的。</p>
+<p>如何实现AOP<br>通过动态代理的方法，来实现AOP的思想</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"add方法的参数是"</span>+num1 + <span class="string">","</span> + num2);</span><br><span class="line">        <span class="keyword">int</span> result=num1+num2;</span><br><span class="line">        System.out.println(<span class="string">"add方法的结果是"</span>+result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Cal cal=<span class="keyword">new</span> CalImpl();</span><br><span class="line">cal.add(<span class="number">1</span>,<span class="number">1</span>);</span><br></pre></td></tr></table></figure>
+
+<p>上面的代码，日志信息和业务逻辑的耦合高，不利于维护，故使用AOP优化<br>给业务代码找一个代理，打印日志信息的工作由代理来做</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样的业务代码非常纯粹</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> num1, <span class="keyword">int</span> num2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> result=num1+num2;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Cal cal=<span class="keyword">new</span> CalImpl();<span class="comment">//创建委托对象</span></span><br><span class="line">MyInvocationHandler myInvocationHandler=<span class="keyword">new</span> MyInvocationHandler();<span class="comment">//实例化MyInvocationHandler帮助我创建代理对象</span></span><br><span class="line">Cal cal1= (Cal) myInvocationHandler.bind(cal);<span class="comment">//返回代理对象</span></span><br><span class="line">cal1.add(<span class="number">1</span>,<span class="number">1</span>);<span class="comment">//这个是代理对象调用方法</span></span><br></pre></td></tr></table></figure>
+<p>MyInvocationHandler.java</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyInvocationHandler</span> <span class="keyword">implements</span> <span class="title">InvocationHandler</span> </span>&#123;</span><br><span class="line">    <span class="comment">//委托对象</span></span><br><span class="line">    <span class="keyword">private</span> Object object=<span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">//返回代理对象</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">bind</span><span class="params">(Object object)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.object=object;</span><br><span class="line">        <span class="keyword">return</span> Proxy.newProxyInstance(object.getClass().getClassLoader(),object.getClass().getInterfaces(),<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//invoke调用</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Object <span class="title">invoke</span><span class="params">(Object proxy, Method method, Object[] args)</span> <span class="keyword">throws</span> Throwable </span>&#123;</span><br><span class="line">        System.out.println(method.getName()+<span class="string">"方法参数是"</span>+ Arrays.toString(args));</span><br><span class="line">        Object result=method.invoke(<span class="keyword">this</span>.object,args);</span><br><span class="line">        System.out.println(method.getName()+<span class="string">"的结果是"</span>+result);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>上面是原生的动态代理，spring框架对其进行了封装<br>用面向对象的思想实现AOP，创建一个切面对象，所有非业务代码在切面对象中完成</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.aspectj<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>aspectjweaver<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.9.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-aop<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.2.6.RELEASE<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/05/java%E5%BC%82%E5%B8%B8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/05/java%E5%BC%82%E5%B8%B8/" itemprop="url">java异常</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T21:04:32+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  441
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="异常的概念"><a href="#异常的概念" class="headerlink" title="异常的概念"></a>异常的概念</h1><p>异常是发生在程序执行过程中阻碍程序正常执行的错误事件（阻碍正常运行的事件）</p>
-<p>只要在Java语句执行中产生了异常，一个异常对象就会被创建，JRE就会试图寻找异常处理程序来处理异常。</p>
-<h1 id="Java异常的分类"><a href="#Java异常的分类" class="headerlink" title="Java异常的分类"></a>Java异常的分类</h1><p>Throwable为顶层父类<br>Throwable分为Error类和Exception类。<br>Error类：程序无法处理的严重错误，我们不作处理，与操作者无关。如系统崩溃，内存不足，堆栈溢出等<br>Exception —— 异常：异常可以分为运行时异常和编译期异常</p>
-<ul>
-<li>RuntimeException及其子类：即运行时异常，不会被编译器所检测出来，我们必须修正代码。</li>
-<li>非RuntimeException及其子类：即编译期异常，必须处理，否则程序编译无法通过。</li>
+<h1 id="注解"><a href="#注解" class="headerlink" title="注解"></a>注解</h1><h3 id="1-具体方法处的注解"><a href="#1-具体方法处的注解" class="headerlink" title="1.具体方法处的注解"></a>1.具体方法处的注解</h3><p>注解@Before(“execution(public int 包名.方法名())”)或者用通配符*替代方法名</p>
+<h3 id="2-在aspect类定义处的注解，面向对象"><a href="#2-在aspect类定义处的注解，面向对象" class="headerlink" title="2.在aspect类定义处的注解，面向对象"></a>2.在aspect类定义处的注解，面向对象</h3><ul>
+<li>Aspect注解让它成为了切面对象</li>
+<li>Component注解是让IOC来管理它</li>
 </ul>
-<p>区别就是一个编译能通过，一个编译通不过。</p>
-<p><img src="/images/throwable.jpg" alt="throwable"></p>
-<h1 id="检查型异常和非检查型异常"><a href="#检查型异常和非检查型异常" class="headerlink" title="检查型异常和非检查型异常"></a>检查型异常和非检查型异常</h1><p>检查型异常  非RuntimeException及其子类<br>非检查型异常  Error类和RuntimeException及其子类</p>
-<h1 id="异常处理语句"><a href="#异常处理语句" class="headerlink" title="异常处理语句"></a>异常处理语句</h1><p>try…catch…finally语句块<br>throws函数声明</p>
-<p>特别的是：如果catch中有return语句，那么finally会在return执行之前执行。</p>
-<h1 id="throws和throw"><a href="#throws和throw" class="headerlink" title="throws和throw"></a>throws和throw</h1><p>throw是语句抛出一个异常<br>throws是声明 方法可能抛出的异常</p>
-<h1 id="final-finalize-finally关键字的区别"><a href="#final-finalize-finally关键字的区别" class="headerlink" title="final,finalize,finally关键字的区别"></a>final,finalize,finally关键字的区别</h1><p>首先，finalize是方法<br>final,finally是关键字<br>final修饰类、变量、方法 表示不能再继承/赋值/重写<br>finall用于异常处理代码块<br>finalize是Object类的方法，<br>在垃圾收集器执行的时候会调用被回收对象的finalize（）方法<br>实现资源的回收。</p>
-<h1 id="如何自定义异常"><a href="#如何自定义异常" class="headerlink" title="如何自定义异常"></a>如何自定义异常</h1><p>创建自定义类继承Exception类<br>在方法中通过throw抛出异常<strong>对象</strong></p>
+<p>并且在被代理类处也要加上Component注解</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Aspect</span></span><br><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LoggerAspect</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Before</span>(<span class="string">"execution(public int com.tt.utils.impl.CalImpl.*())"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">before</span><span class="params">(JoinPoint joinPoint)</span></span>&#123;</span><br><span class="line">        <span class="comment">//获取方法名</span></span><br><span class="line">        String name= joinPoint.getSignature().getName();</span><br><span class="line">        <span class="comment">//获取参数</span></span><br><span class="line">        String args= Arrays.toString(joinPoint.getArgs());</span><br><span class="line">        System.out.println(name + <span class="string">"方法的参数是"</span> + args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CalImpl</span> <span class="keyword">implements</span> <span class="title">Cal</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 
 
+<p>最后在spring.xml中配置</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--自动扫描--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"com.tt"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!--使得aspect注解生效,为切面自动生成代理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">aop:aspectj-autoproxy</span>&gt;</span><span class="tag">&lt;/<span class="name">aop:aspectj-autoproxy</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 
 
-    
 
-    
 
-    
 
-    <footer class="post-footer">
-      
 
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/05/java%E9%99%A4%E6%B3%95%E5%92%8C%E5%8F%96%E4%BD%99/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/05/java%E9%99%A4%E6%B3%95%E5%92%8C%E5%8F%96%E4%BD%99/" itemprop="url">java除法和取模</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T20:50:07+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  151
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="取余和取模的区别"><a href="#取余和取模的区别" class="headerlink" title="取余和取模的区别"></a>取余和取模的区别</h1><p><strong>各个环境下%运算符的含义不同，比如c/c++，java 为取余，而python则为取模。</strong></p>
-<p>取余，遵循尽可能让商向0靠近的原则<br>取模，遵循尽可能让商向负无穷靠近的原则</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">对于式子<span class="number">10</span>%-<span class="number">3</span></span><br><span class="line"></span><br><span class="line">c++/java为 -<span class="number">3</span>  ...<span class="number">1</span><span class="comment">//取余</span></span><br><span class="line">python为   -<span class="number">4</span>  ...-<span class="number">2</span><span class="comment">//取模</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="java中的取余和取模"><a href="#java中的取余和取模" class="headerlink" title="java中的取余和取模"></a>java中的取余和取模</h1><p>Java 中的取余运算是 %，而取模运算是 Math.floorMod()</p>
-<p><strong>取余运算的符号是根据第一个运算数决定的</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//java</span></span><br><span class="line">System.out.println(<span class="number">7</span> % <span class="number">4</span>);<span class="comment">//3</span></span><br><span class="line">System.out.println((-<span class="number">7</span>) % <span class="number">4</span>);<span class="comment">//-3</span></span><br><span class="line">System.out.println(<span class="number">7</span> % (-<span class="number">4</span>));<span class="comment">//3</span></span><br><span class="line">System.out.println((-<span class="number">7</span>) % (-<span class="number">4</span>));<span class="comment">//-3</span></span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/05/Integer%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/05/Integer%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" itemprop="url">Integer相关知识</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-05T20:11:27+08:00">
-                2020-06-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  325
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Integer类详解"><a href="#Integer类详解" class="headerlink" title="Integer类详解"></a>Integer类详解</h1><p>基本数据类型  boolean、byte、int、char、long、short、double、float<br>引用数据类型  数组、类、接口<br>Integer是类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="class"><span class="keyword">class</span> <span class="title">Integer</span> <span class="keyword">extends</span> <span class="title">Number</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Integer</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="Integer重写了hashCode方法，返回值是value-即Integer对象-的数值。"><a href="#Integer重写了hashCode方法，返回值是value-即Integer对象-的数值。" class="headerlink" title="Integer重写了hashCode方法，返回值是value,即Integer对象 的数值。"></a>Integer重写了hashCode方法，返回值是value,即Integer对象 的数值。</h1><h1 id="Integer重写了equals方法-比较值-比较地址"><a href="#Integer重写了equals方法-比较值-比较地址" class="headerlink" title="Integer重写了equals方法 比较值   ==比较地址"></a>Integer重写了equals方法 比较值   ==比较地址</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public boolean equals(Object obj) &#123;</span><br><span class="line">        if (obj instanceof Integer) &#123;</span><br><span class="line">            return value == ((Integer)obj).intValue();</span><br><span class="line">        &#125;</span><br><span class="line">        return false;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h2 id="Integer-类和-int-的区别"><a href="#Integer-类和-int-的区别" class="headerlink" title="Integer 类和 int 的区别"></a>Integer 类和 int 的区别</h2><p>1.Integer是类型和int是基本数据类型<br>2.Integer默认值是null int默认值是0<br>3.Integer实际是对象的引用，而int则是直接存储数据值<br>4.baiInteger变量必须实例化后才能使用，而int变量不需要</p>
-<h1 id="开箱和装箱"><a href="#开箱和装箱" class="headerlink" title="开箱和装箱"></a>开箱和装箱</h1><p>自动装箱和拆箱<br>在编译期</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//自动装箱</span></span><br><span class="line">Integer a = <span class="number">128</span>;</span><br><span class="line">编译器转换为</span><br><span class="line">Integer a = Integer.valueOf(<span class="number">128</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//自动拆箱</span></span><br><span class="line">Integer a = <span class="keyword">new</span> Integer(<span class="number">128</span>);</span><br><span class="line"><span class="keyword">int</span> b=a;</span><br><span class="line">编译器转换为</span><br><span class="line">Integer a = <span class="keyword">new</span> Integer(<span class="number">128</span>);</span><br><span class="line"><span class="keyword">int</span> b = a.intValue();</span><br></pre></td></tr></table></figure>
-<h1 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h1><p>缓存只能在自动装箱或者是调用Integer.valueOf(int x)才会有用。</p>
-<p>缓存的范围byte&lt;= 127、char&lt;=127、-128&lt;=short &lt;=127、-128&lt;=int &lt;=127</p>
-<p>所有就有这么一道题</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Integer i1 = <span class="number">127</span>;  </span><br><span class="line">Integer i2 = <span class="number">127</span>;  </span><br><span class="line">System.err.println(i1 == i2);  <span class="comment">//true</span></span><br><span class="line">      </span><br><span class="line">Integer i1 = <span class="number">128</span>;  </span><br><span class="line">Integer i2 = <span class="number">128</span>;  </span><br><span class="line">System.err.println(i1 == i2);  <span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">Integer i3 = <span class="keyword">new</span> Integer(<span class="number">10</span>); </span><br><span class="line">Integer i4 = <span class="keyword">new</span> Integer(<span class="number">10</span>); </span><br><span class="line">System.err.println(i3 == i4);  <span class="comment">//false</span></span><br><span class="line">System.out.println(i3.equals(i4));<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/04/Comparable/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/04/Comparable/" itemprop="url">Comparable和Comparator</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-04T21:31:38+08:00">
-                2020-06-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  211
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h1><p>Comparable<br>Comparator</p>
-<h1 id="Comparable"><a href="#Comparable" class="headerlink" title="Comparable"></a>Comparable</h1><h1 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h1><p>为了排序</p>
-<p>Comparator位于包java.util下，而Comparable位于包java.lang下</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T t)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>继承该接口，需要重写compareTo()方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Comparable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name,<span class="keyword">int</span> age)</span></span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name=name;</span><br><span class="line">        <span class="keyword">this</span>.age=age;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Person p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.age()-p.age;<span class="comment">//比较的依据就是返回值是 大于0/小于0/等于0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">ArrayList&lt;Person&gt; arr = <span class="keyword">new</span> ArrayList();</span><br><span class="line">Collections.sort(arr);</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>Comparator</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">compare</span><span class="params">(T o1, T o2)</span></span>;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>何时使用Comparator?<br>不改变类的原样，不想主动实现 Comparable 接口，但我们又需要它们之间进行比较</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Person</span>&gt; </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person o1, Person o2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o1.getAge() - o2.getAge();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">List&lt;Person&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">list.sort(<span class="keyword">new</span> PersonComparator());</span><br></pre></td></tr></table></figure>
-
-
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/04/hashmap%E5%8E%9F%E7%90%86/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/04/hashmap%E5%8E%9F%E7%90%86/" itemprop="url">hashmap原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-04T19:26:01+08:00">
-                2020-06-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  362
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h1><h1 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h1><h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>底层实现？<br>哈希表（数组+链表）<br>在hashmap有一个静态内部类Entry<br>其属性有key value next<br>hashmap的基础就是一个Entry[]数组</p>
-<p>Entry&lt;K,V&gt;[] table;//只有在第一次put时才会初始化</p>
-<p>JDK1.8 当链表长度超过8，链表转为红黑树</p>
-<p>hashmap的重要字段<br>size 大小<br>threshold阈值=capacity<em>loadFactor  16</em>0.75<br>loadFactor负载因子  默认是0.75<br>modCount迭代次数</p>
-<p>哈希桶的默认个数是16</p>
-<p>方法的实现？<br>put</p>
-<ul>
-<li><p>hash<br>将大量的数据 转化为 定长</p>
-</li>
-<li><p>默认初始容量 16</p>
-</li>
-<li><p>hashmap的数组大小为什么是2的幂次方？<br>减少hash碰撞<br>数组长度2^n  那么二进制形式是1000…<br>那么长度length-1 的二进制形式是11111…<br>进行&amp;计算的时候，就不会有哈希桶是是空的了。</p>
-</li>
-<li><p>hashmap的默认容量</p>
-</li>
-<li><p>hashmap是线程安全的吗？为什么？</p>
-</li>
-<li><p>hashmap的扩容机制？<br>2*length<br>新开一个2倍长度的，然后将元素迁移过去 重新hash</p>
-</li>
-<li><p>1.7存在死锁问题<br>扩容rehash的时候形成了环形链表，存在查找的死循环</p>
-</li>
-<li><p>1.7存在bug<br>通过精心构造的恶意请求引发Dos<br>通过成千上万个相同hash值的数据，严重影响性能</p>
-</li>
-</ul>
-<h1 id="hashtable-hashmap的区别"><a href="#hashtable-hashmap的区别" class="headerlink" title="hashtable hashmap的区别"></a>hashtable hashmap的区别</h1><p>都实现了map接口<br>hm允许键或者值为null   不同步<br>ht不允许键或者值为null  同步，线程安全<br>现在不推荐使用ht</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/03/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/03/%E5%AF%86%E7%A0%81%E5%AD%A6%E5%A4%8D%E4%B9%A0/" itemprop="url">密码学复习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-03T23:15:21+08:00">
-                2020-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  0
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/03/dubbo%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/03/dubbo%E7%AC%AC%E4%B8%80%E6%AC%A1%E4%BD%BF%E7%94%A8/" itemprop="url">dubbo第一次使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-03T15:15:41+08:00">
-                2020-06-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  8
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  1
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id=""><a href="#" class="headerlink" title=""></a></h1><p>linux 环境下zookeeper<br>jdk安装</p>
-<p>zookeeper</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-    <div>
-      
-    </div>
-
-
-
-
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-  
-
-         
-
-	  
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tantian123.github.io/tantian123.github.io/2020/06/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="谭天">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/tantian123.github.io/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tantian's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/tantian123.github.io/2020/06/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url">mysql学习笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-06-01T15:57:54+08:00">
-                2020-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  10
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.使用终端操作数据库<br>1.1登录<br>管理员模式下 打开命令提示符cmd<br>net stop mysql<br>net start mysql</p>
-<p>1.2连接<br>mysql -u用户名 -p密码</p>
-<p>1.3查询所有数据库<br>show databases;<br>1.4选中某一个数据库进行操作(不选不能操作)<br>use 数据库名<br>1.5选中后，查询某一个表<br>show tables;<br>select * from user</p>
-<p>1.6退出<br>exit</p>
-<p>2.使用可视化工具操作数据库</p>
-<p>3.在java中使用数据库</p>
-<hr>
-<p>创建数据库<br>create database test;</p>
-<p>建表<br>create table user(<br>    id INT,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20)<br>)<br>删除表<br>drop table user;</p>
-<p>查看表的结果<br>describe user;简写为desc</p>
-<p>增加数据记录<br>insert into user values(1,’tt’,’tt123456789’);</p>
-<hr>
-<p>mysql常用数据类型</p>
-<p>三类 ：数值 日期  字符串<br>选择依据数据类型的大小</p>
-<p>1.数值<br>常用的是<br>SMALLINT 2字节<br>INT  4字节<br>BIGINT 8字节<br>FLOAT  4字节<br>DOUBLE 8字节<br>2.日期<br>DATE   格式是’YYYY-MM-DD’<br>TIME 格式是’HH-MM-SS’<br>3.字符串<br>CHAR 0-255字节  定长字符串<br>VARCHAR 0-65535字节 变长字符串<br>TEXT 0-65535字节</p>
-<hr>
-<p>增删改查<br>1.insert<br>insert into user values(1,’tt’,’tt123456789’);<br>2.delete<br>delete from user where name=’tt’<br>3.update<br>update user set name=’tt’ where id=’1’<br>4.select<br>select * from user where name=’tt’</p>
-<hr>
-<p>约束<br>添加约束可以在建表的时候，也可以之后加</p>
-<p>1.主键约束primary key<br>唯一确定一张表中的一条记录 该字段不重复且不为空(不能为NULL，不能与之前的重复)<br>create table user(<br>    id INT primary key,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20)<br>)<br>联合主键  加起来不重复就行<br>create table user(<br>    id INT,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20),<br>    primary key（id,name)<br>)</p>
-<p>建表时忘记主键约束，之后修改<br>alter table user add primary key(id);<br>删除主键约束<br>alter table user drop primary key;<br>修改主键约束<br>alter table user modify id int primary key;</p>
-<p>2.自增约束auto_increment  和主键约束一起用 自动管控id的值<br>create table user(<br>    id INT primary key auto_increment,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20)<br>) </p>
-<p>3.外键约束<br>涉及到两个表 主表 副表<br>foreign key指明外键来自于哪个表<br>主表里面不存在的值，副表不能有<br>主表中被副表引用了的值，是不可以删除的</p>
-<p>create table user(<br>    id INT primary key,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20)<br>)<br>create table company(<br>    id INT primary key,<br>    money INT,<br>    user_id INT,<br>    foreign key(user_id) references user(id)<br>)</p>
-<p>4.唯一约束unique 不可重复<br>create table user(<br>    id INT,<br>    name VARCHAR(20)  unique,<br>    pwd VARCHAR(20)<br>)<br>create table user(<br>    id INT,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20),<br>    unique(name,id,pwd) //加在一起不重复就可以<br>)</p>
-<p>alter table user add unique(name);</p>
-<p>删除唯一约束<br>alter table user drop index name;//这里不是unique是因为唯一约束有多个<br>修改唯一约束<br>alter table user modify name varchar(20) unique;<br>5.非空约束 不为null<br>create table user(<br>    id INT,<br>    name VARCHAR(20)  not null,<br>    pwd VARCHAR(20)<br>)<br>6.默认约束 default<br>create table user(<br>    id INT,<br>    name VARCHAR(20),<br>    pwd VARCHAR(20) default ‘root’<br>)</p>
-<hr>
-<p>数据库的设计范式 NormalForm<br>1.第一范式 1NF<br><strong>各个属性不可再分</strong>（字段不可再分）<br>例如：表有地址这个属性，地址可以分为省、市、区、乡镇等，<br>所以整个地址设为一个字段，是不合理的。</p>
-<p>2.第二范式 2NF<br>满足第一范式的基础上，要求非主属性对主属性是完全函数依赖，即<strong>不存在部分函数依赖</strong>（有主键，非主键列完全依赖于主键，不可以依赖主键的一部分）<br>例如：有这样一个表，它的字段有学生学号id，学生名字，课程编号id，课程名称<br>那么，课程名称是部分依赖主键（学生id,课程id）的，这样的表 不合理。<br>因为如果我没选课，这条数据就不能插入数据库。<br>所以需要划分为学生表和课程表。</p>
-<p>3.第三范式 3NF<br>满足第二范式的基础上，要求<strong>不存在传递函数依赖</strong><br>例如：有这样一个表，学生学号id，学生证id，学生证说明。<br>那么，学生证说明是传递依赖于学生学号，不是直接依赖。<br>所以需要划分为学生表和学生证表。</p>
-<p>4.BCNF<br>满足第三范式的基础上，不允许主键内部之间存在依赖<br>例如 主键为(学生，老师) 课程<br>这样的关系满足第三范式，但不满足BCNF范式</p>
-<p>范式的优缺点:<br>减少冗余<br>结构清晰<br>性能降低</p>
-<p>表之间关系的解释<br>一对一：学生和学生证   通过外键和唯一约束<br>一对多：学生和班级     通过外键<br>多对多：学生和老师     通过引入中间表</p>
-<hr>
-<p>与查询相关的知识<br>例子：<br>学生表 Student<br>学号 姓名 年龄 所在班级<br>课程表 Course<br>课程号，课程名称 教师编号<br>成绩表 Score<br>学号 课程号 成绩<br>老师表 Teacher<br>教师编号，教师名字，教师年龄</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line">//建表</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Student(</span><br><span class="line">    <span class="keyword">sid</span> <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    sname <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    classid <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Teacher(</span><br><span class="line">    tid <span class="built_in">int</span> primary <span class="keyword">key</span>,</span><br><span class="line">    tname <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    age <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Course(</span><br><span class="line">    cid <span class="built_in">varchar</span>(<span class="number">20</span>) primary <span class="keyword">key</span>,</span><br><span class="line">    cname <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    tid <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span>(tid) <span class="keyword">references</span> Teacher(tid)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> Score(</span><br><span class="line">    <span class="keyword">sid</span> <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    cid <span class="built_in">varchar</span>(<span class="number">20</span>) <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    score <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span>,</span><br><span class="line">    primary <span class="keyword">key</span>(<span class="keyword">sid</span>,cid),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span> (<span class="keyword">sid</span>) <span class="keyword">references</span> Student(<span class="keyword">sid</span>),</span><br><span class="line">    <span class="keyword">foreign</span> <span class="keyword">key</span> (cid) <span class="keyword">references</span> Course(cid)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//添加数据</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'谭天'</span>,<span class="string">'计科1703班'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'罗杰'</span>,<span class="string">'计科1703班'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'宋志豪'</span>,<span class="string">'计科1703班'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'曾繁'</span>,<span class="string">'计科1703班'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">5</span>,<span class="string">'xxx'</span>,<span class="string">'计科1000班'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'李老师'</span>,<span class="number">50</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'刘老师'</span>,<span class="number">20</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'王老师'</span>,<span class="number">30</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Teacher <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'孙老师'</span>,<span class="number">40</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'1001'</span>,<span class="string">'语文课'</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'1002'</span>,<span class="string">'数学课'</span>,<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'1003'</span>,<span class="string">'英语课'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Course <span class="keyword">values</span>(<span class="string">'2001'</span>,<span class="string">'理综课'</span>,<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'1001'</span>,<span class="number">100</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'1002'</span>,<span class="number">90</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'1003'</span>,<span class="number">80</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'2001'</span>,<span class="number">70</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Score <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'1002'</span>,<span class="number">70</span>);</span><br><span class="line"></span><br><span class="line">//问题</span><br><span class="line">1.查询学生的学号和名字</span><br><span class="line"></span><br><span class="line">2.查询学生的不重复的所在班级列 x 关键字</span><br><span class="line"></span><br><span class="line">3.查询成绩表 80-90分之间的记录</span><br><span class="line"></span><br><span class="line">4.查询成绩表 70 100或者90的记录</span><br><span class="line"></span><br><span class="line">5.查询老师 以年龄升序/降序</span><br><span class="line"></span><br><span class="line">6.查询计科1703班的人数</span><br><span class="line"></span><br><span class="line">7.查询最高分的学生的学号和对应的课程号（子查询或者排序后取第一个）x max函数</span><br><span class="line"></span><br><span class="line">8.查询学生1的平均分</span><br><span class="line"></span><br><span class="line">9.分别查询每名学生的平均分</span><br><span class="line"></span><br><span class="line">10.查询以'1'开头的课程的平均分 并且该课程至少有两人选择 </span><br><span class="line">having count关键字 xx</span><br><span class="line">先把至少两人选择的课程分组选出来 然后并上 like 1%</span><br><span class="line">最后在结果处计算平均分</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sid</span>,sname <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">distinct</span> classid <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> score <span class="keyword">where</span> score <span class="keyword">between</span> <span class="number">80</span> <span class="keyword">and</span> <span class="number">90</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> score <span class="keyword">where</span> score &gt; <span class="number">80</span> <span class="keyword">and</span> score &lt; <span class="number">90</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> score <span class="keyword">where</span> score <span class="keyword">in</span>(<span class="number">70</span>,<span class="number">90</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> teacher <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">asc</span>;//asc可省略</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> teacher <span class="keyword">order</span> <span class="keyword">by</span> age <span class="keyword">desc</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">count</span>(*) <span class="keyword">from</span> student <span class="keyword">where</span> classid=<span class="string">'计科1703班'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sid</span>,cid <span class="keyword">from</span> score <span class="keyword">where</span> score=(<span class="keyword">select</span> <span class="keyword">max</span>(score) <span class="keyword">from</span> score);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sid</span>,cid <span class="keyword">from</span> score <span class="keyword">order</span> <span class="keyword">by</span> score <span class="keyword">desc</span> <span class="keyword">limit</span> <span class="number">0</span>,<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">avg</span>(score) <span class="keyword">from</span> score <span class="keyword">where</span> <span class="keyword">sid</span>=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sid</span>，<span class="keyword">avg</span>(score) <span class="keyword">from</span> score </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> <span class="keyword">sid</span>;</span><br><span class="line"></span><br><span class="line">//分层次</span><br><span class="line"><span class="keyword">select</span> cid,<span class="keyword">avg</span>(score) <span class="keyword">from</span> score </span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> cid</span><br><span class="line"><span class="keyword">having</span> <span class="keyword">count</span>(<span class="keyword">sid</span>)&gt;=<span class="number">2</span> </span><br><span class="line"><span class="keyword">and</span> cid <span class="keyword">like</span> <span class="string">'1%'</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">//问题</span><br><span class="line">1.多表查询</span><br><span class="line">查询 所有学生的名字 课程号 分数 sname cid score(分别在student表和score表)</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> sname,cid,score <span class="keyword">from</span> student,score</span><br><span class="line"><span class="keyword">where</span> student.sid=score.sid;</span><br><span class="line"></span><br><span class="line">查询 所有学生的名字 课程名 分数 所在列</span><br><span class="line"><span class="keyword">select</span> sname,cname,score,student.sid <span class="keyword">as</span> stu_id,course.cid <span class="keyword">as</span> cou_id <span class="keyword">from</span> student,score,course</span><br><span class="line"><span class="keyword">where</span> student.sid=score.sid <span class="keyword">and</span> score.cid=course.cid;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">2.子查询</span><br><span class="line">查询计科1703班学生每门课的平均分</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sid</span> <span class="keyword">from</span> student <span class="keyword">where</span> classid=<span class="string">'计科1703班'</span>;</span><br><span class="line">=&gt;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> score <span class="keyword">where</span> <span class="keyword">sid</span> <span class="keyword">in</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">sid</span> <span class="keyword">from</span> student <span class="keyword">where</span> classid=<span class="string">'计科1703班'</span>;)</span><br><span class="line">=&gt;</span><br><span class="line"><span class="keyword">select</span> cid,<span class="keyword">avg</span>(score) <span class="keyword">from</span> score <span class="keyword">where</span> <span class="keyword">sid</span> <span class="keyword">in</span></span><br><span class="line">(<span class="keyword">select</span> <span class="keyword">sid</span> <span class="keyword">from</span> student <span class="keyword">where</span> classid=<span class="string">'计科1703班'</span>;) </span><br><span class="line">group by cid;</span><br></pre></td></tr></table></figure>
-
-
-
-
-<hr>
-<p>mysql的四种连接查询</p>
-<p>内连接 把有关系的数据查询出来<br>inner join 或者join<br>外连接<br>1.左连接<br>left join 或者 left outer join<br>2.右连接<br>right join 或者 right outer join<br>3.完全外连接<br>full join  或者 full outer join</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">person表和card表</span><br><span class="line">person  id name cardID</span><br><span class="line">card    id name</span><br><span class="line"></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> person(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>;</span><br><span class="line">    name varchar(20);</span><br><span class="line">    cardID int</span><br><span class="line">);</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> card(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">int</span>;</span><br><span class="line">    name varchar(20)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> card <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'饭卡'</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> card <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'银行卡'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> person <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'张三'</span>，<span class="number">1</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> person <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'李四'</span>，<span class="number">2</span>);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> person <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'王五'</span>，<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">1.内连接 把有关系的数据查询出来</span><br><span class="line">这里故意没有外键</span><br><span class="line">那么 我们要使用 inner join查询</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> person;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> person <span class="keyword">inner</span> <span class="keyword">join</span> card <span class="keyword">on</span> person.cardID=card.id;</span><br><span class="line"></span><br><span class="line">// on 表示连接条件</span><br><span class="line"></span><br><span class="line">2. left join  左边表内容全查出来；右边表有的显示，没有的补null</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> person <span class="keyword">left</span> <span class="keyword">join</span> card <span class="keyword">on</span> person.cardID=card.id;</span><br><span class="line"></span><br><span class="line">3. right join  右边表内容全查出来；左边表有的显示，没有的补null</span><br><span class="line"></span><br><span class="line">4.mysql没有外连接</span><br><span class="line">使用union</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> person <span class="keyword">inner</span> <span class="keyword">join</span> card <span class="keyword">on</span> person.cardID=card.id</span><br><span class="line"><span class="keyword">union</span></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> person <span class="keyword">left</span> <span class="keyword">join</span> card <span class="keyword">on</span> person.cardID=card.id;</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-<hr>
-<p>mysql事务</p>
-<p>自动commit的开启和关闭</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">//禁止默认的自动提交 <span class="keyword">SET</span> AUTOCOMMIT=<span class="number">0</span> </span><br><span class="line">//开启自动提交 <span class="keyword">SET</span> AUTOCOMMIT=<span class="number">1</span> </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">SET</span> AUTOCOMMIT=<span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">6</span>,<span class="string">'神秘人'</span>,<span class="string">'异次元'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br><span class="line"></span><br><span class="line"><span class="keyword">rollback</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
-
-<p>手动commit<br>begin;或者 start transaction;</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">begin</span>;</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> Student <span class="keyword">values</span>(<span class="number">6</span>,<span class="string">'神秘人'</span>,<span class="string">'异次元'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br><span class="line"><span class="keyword">rollback</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> student;</span><br></pre></td></tr></table></figure>
-
-
-<p>事务的隔离级别<br>1.read uncommitted;  读未提交<br>2.read committed;    读已提交<br>3.repeatable read;   可重复读<br>4.serializable;    可串行化</p>
-<p>MySQL 数据库默认的事务隔离级别是 REPEATABLE_READ (可重复读)。</p>
-<p>修改隔离级别<br>设置全局的事务隔离级别<br>set global transaction isolation level read committed;<br>设置本次会话的事务隔离级别<br>set session transaction isolation level read committed;</p>
 
           
         
@@ -2060,7 +2102,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/tantian123.github.io/page/2/">2</a><a class="page-number" href="/tantian123.github.io/page/3/">3</a><a class="extend next" rel="next" href="/tantian123.github.io/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/tantian123.github.io/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/tantian123.github.io/page/5/">5</a><a class="extend next" rel="next" href="/tantian123.github.io/page/2/">&lt;i class=&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
   </nav>
 
 
@@ -2106,7 +2148,7 @@
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -2119,7 +2161,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>

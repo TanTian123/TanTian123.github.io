@@ -90,7 +90,7 @@
 <meta property="og:site_name" content="tantian&#39;s Blog">
 <meta property="og:description" content="定义在 java.lang包下 构造方法 new方法123String s=new String();&#96;&#96;&#96; JVM创建字符串对象，但不存储在字符串常量池 String(char[] value)String(char chars[], int x, int n)12+ 双引号 String s=”hello”;123456JVM去字符串池找有没有值相等字符串，如果有，则返回找到的字符串引用。否则">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-05-27T15:11:15.995Z">
+<meta property="og:updated_time" content="2020-07-12T18:09:31.696Z">
 <meta name="twitter:card" content="summary">
 
 
@@ -344,7 +344,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  796
+                  853
                 </span>
               
 
@@ -389,21 +389,21 @@ String s=”hello”;<figure class="highlight plain"><table><tr><td class="gutte
 public int length()</li>
 </ul>
 <p>public char charAt(int index)</p>
-<p>public String substring(int beginIndex)<br>public String substring(int beginIndex, intendIndex)</p>
+<p>public String substring(int beginIndex)<br>public String substring(int beginIndex, int endIndex)</p>
 <p>public int compareTo(String str)</p>
 <p>public char[] toCharArray()</p>
 <p>public int indexOf(String str)</p>
 <p>public String toLowerCase()<br>public String toUpperCase()</p>
 <p>String trim()</p>
 <p>String[] split(String str)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 属性</span><br><span class="line"></span><br><span class="line"># ==和equals的区别</span><br><span class="line">+ == </span><br><span class="line">对于基本数据类型，比较值</span><br><span class="line">对于引用类型，比较内存地址</span><br><span class="line">+ equals</span><br><span class="line">equals不能比较基本数据类型（它是继承Object类）</span><br><span class="line">如果没对equals进行重写，它比较地址</span><br><span class="line">但是，String/Date类进行了重写，所以只比较值。</span><br><span class="line"></span><br><span class="line"># +号 拼接</span><br><span class="line">因为String是immutable的，每次的操作都会创建一个新的String对象（非常耗时）</span><br><span class="line">字符串的+操作其本质是创建了StringBuilder对象进行append操作，然后将拼接后的StringBuilder对象用toString方法处理成String对象</span><br><span class="line"></span><br><span class="line">所以字符串+操作的时候，用StringBuilder更快</span><br><span class="line"># String StringBuilder和StringBuffer</span><br><span class="line">StringBuilder</span><br><span class="line">StringBuffer</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"># 属性</span><br><span class="line"></span><br><span class="line"># ==和equals的区别</span><br><span class="line">+ == </span><br><span class="line">对于基本数据类型，比较值</span><br><span class="line">对于引用类型，比较内存地址</span><br><span class="line">+ equals</span><br><span class="line">equals不能比较基本数据类型（它是继承Object类）</span><br><span class="line">如果没对equals进行重写，它比较地址</span><br><span class="line">但是，String/Date类进行了重写，所以只比较值。</span><br><span class="line"></span><br><span class="line"># +号 拼接</span><br><span class="line">因为String是immutable的，每次的操作都会创建一个新的String对象（非常耗时）</span><br><span class="line">字符串的+操作其本质是创建了StringBuilder对象进行append操作，然后将拼接后的StringBuilder对象用toString方法处理成String对象</span><br><span class="line"></span><br><span class="line">所以字符串+操作的时候，用StringBuilder更快</span><br><span class="line"></span><br><span class="line">这里去看看运行时常量池的概念</span><br><span class="line"># String StringBuilder和StringBuffer</span><br><span class="line">StringBuilder</span><br><span class="line">StringBuffer</span><br></pre></td></tr></table></figure>
 <p>StringBuffer 对象.append(String str)</p>
 <p>StringBuffer 对象.reverse();</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">区别：StringBuffer是线程安全的（synchronized），而 StringBuilder不是，所以StringBuilder效率更高，锁的获取和释放会带来开销。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">其实，stringbuffer基本没有适用场景，你应该在所有的情况下选择使用stringbuiler</span><br><span class="line"># intern方法</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 面试题：</span><br><span class="line">1.String是基本数据类型吗</span><br><span class="line">不是，基本数据类型是 byte short int long char double float boolean</span><br><span class="line">2.String可以被继承吗</span><br><span class="line">不能，是final类</span><br><span class="line">3.String有reverse方法吗</span><br><span class="line">String没有，但StringBuffer和StringBuilder有</span><br><span class="line">4.String, StringBuffer，StringBuilder的区别</span><br><span class="line">5.String是不可变的有什么好处</span><br><span class="line">线程安全 运行时节省大量java堆空间</span><br><span class="line">6.如何判断两个String是否相等</span><br><span class="line"> &quot; == &quot;或者equals</span><br><span class="line">equals是判断两个变量或实例所指向的内存空间的值是不是相同(比较变量的值)</span><br><span class="line">使用&quot;==&quot;操作符时，不仅比较字符串的值，还会比较引用的内存地址(比较内存地址)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">7.</span><br></pre></td></tr></table></figure>
 <p>String a = “hello2”;String b = “hello” + 2;System.out.println((a == b));</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输出是true</span><br><span class="line">&quot;hello&quot;+2在编译期间就已经被优化成&quot;hello2&quot;，因此在运行期间，变量a和变量b指向的是同一个对象。</span><br></pre></td></tr></table></figure>
 <p>String a = “hello2”;String b = “hello”;String c = b + 2;System.out.println((a == c));</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输出结果为：false</span><br><span class="line">由于有符号引用的存在，所以 String c = b + 2;不会在编译期间被优化，不会把b+2当做字面常量来处理的，因此这种方式生成的对象事实上是保存在堆上的。因此a和c指向的并不是同一个对象</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输出结果为：false</span><br><span class="line">由于有符号引用的存在，所以 String c = b + 2;不会在编译期间被优化，不会把b+2当做字面常量来处理的，因此这种方式生成的对象事实上是保存在堆上的。因此a和c指向的并不是同一个对象</span><br><span class="line">学完JVM之后的理解，第二个有符号 不被编译器优化，相当于new Stringbuilder.append.append.tostring 所以不是同一个 它是在堆里面的</span><br></pre></td></tr></table></figure>
 <p> //str1 += “love”+”java”;        //代码1<br> str1 = str1+”love”+”java”;      //代码2 </p>
 <pre><code>代码1的效率比代码2的效率要高，代码1中的&quot;love&quot;+&quot;java&quot;在编译期间会被优化成&quot;lovejava&quot;，而代码2中的不会被优化。
 7.讲一下字符串常量池</code></pre>
@@ -555,7 +555,7 @@ public int length()</li>
               
                 <a href="/tantian123.github.io/archives/%7C%7Carchive">
               
-                  <span class="site-state-item-count">22</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -568,7 +568,7 @@ public int length()</li>
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">标签</span>
                 
               </div>
